@@ -162,7 +162,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildGPUs(){ 
         try{
-            FileReader out = new FileReader("cpus.csv");
+            FileReader out = new FileReader("gpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -219,7 +219,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildMemory(){ 
         try{
-            FileReader out = new FileReader("cpus.csv");
+            FileReader out = new FileReader("memories.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
