@@ -9,11 +9,68 @@ public class partBuilder{
     ArrayList<memoryPart> memories = new ArrayList<memoryPart>();
     ArrayList<powerPart> powers = new ArrayList<powerPart>();
     ArrayList<drivePart> drives = new ArrayList<drivePart>();
-    ArrayList<cpuPart> pcs = new ArrayList<cpuPart>();
     public partBuilder(fileReader newInfo){
         buildCPUs();
-        buildGPUs();
-        buildPCs();
+    }
+    
+    public memoryPart findMemory(int memoryfinder){
+        memoryPart savedCpu = null;
+        for(int j = 0; j < memories.size(); j++){
+            if(memories.get(j).memoryID == memoryfinder){
+                savedCpu= memories.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public powerPart findPower(int powerfinder){
+        powerPart savedCpu = null;
+        for(int j = 0; j < powers.size(); j++){
+            if(powers.get(j).powerID == powerfinder){
+                savedCpu= powers.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public drivePart findDrives(int drivefinder){
+        drivePart savedCpu = null;
+        for(int j = 0; j < drives.size(); j++){
+            if(drives.get(j).storageID == drivefinder){
+                savedCpu= drives.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public boardPart findBoard(int boardfinder){
+        boardPart savedCpu = null;
+        for(int j = 0; j < boards.size(); j++){
+            if(boards.get(j).boardID == boardfinder){
+                savedCpu= boards.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public gpuPart findGPU(int gpufinder){
+        gpuPart savedGpu = null;
+        for(int j = 0; j < gpus.size(); j++){
+            if(gpus.get(j).gpuID == gpufinder){
+                savedGpu= gpus.get(j);
+            }
+        }
+        return savedGpu;
+    }
+    
+    public cpuPart findCPU(int cpufinder){
+        cpuPart savedCpu = null;
+        for(int j = 0; j < cpus.size(); j++){
+            if(cpus.get(j).cpuID == cpufinder){
+                savedCpu= cpus.get(j);
+            }
+        }
+        return savedCpu;
     }
     
     public void buildPCs(){
@@ -77,8 +134,6 @@ public class partBuilder{
         }
     }
     
-    
-    
     public void buildCPUs(){
         try{
             FileReader out = new FileReader("cpus.csv");
@@ -130,4 +185,109 @@ public class partBuilder{
         } catch(Exception e) {
         }
     }
+    //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
+    public void buildBoards(){ 
+        try{
+            FileReader out = new FileReader("boards.csv");
+            BufferedReader out2 = new BufferedReader(out);
+            CSVReader reader = new CSVReader(out2);
+            List<String[]> records = reader.readAll();
+            for (int i = 0; i < records.size(); i++) {
+                String[] record = records.get(i);
+                if(i != 0){
+                    int id = Integer.parseInt(record[0]);
+                    String name = record[1];
+                    int sockNum = Integer.parseInt(record[2]);
+                    String sockType = record[3];
+                    String maxSup = record[4];
+                    int gpuSocks = Integer.parseInt(record[5]);
+                    int ramSocks = Integer.parseInt(record[6]);
+                    String ramSockType = record[7];
+                    int ramMax = Integer.parseInt(record[8]);
+                    int peripAva = Integer.parseInt(record[9]);
+                    int peripTotal = Integer.parseInt(record[10]);
+                    boardPart newpart = new boardPart(id,name,sockNum,
+                    sockType,maxSup,gpuSocks,ramSocks,ramSockType,ramMax,
+                    peripAva,peripTotal);
+                    boards.add(newpart);
+                }
+            }
+            
+        } catch(Exception e) {
+        }
+    }
+    //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
+    public void buildMemory(){ 
+        try{
+            FileReader out = new FileReader("cpus.csv");
+            BufferedReader out2 = new BufferedReader(out);
+            CSVReader reader = new CSVReader(out2);
+            List<String[]> records = reader.readAll();
+            for (int i = 0; i < records.size(); i++) {
+                String[] record = records.get(i);
+                if(i != 0){
+                    int id = Integer.parseInt(record[0]);
+                    String name = record[1];
+                    String sockType = record[2];
+                    int memSize = Integer.parseInt(record[3]);
+                    String ramType = record[4];
+                    int ramAmount = Integer.parseInt(record[5]);
+                    memoryPart newpart = new memoryPart(id, name, sockType,
+                    memSize,ramType, ramAmount);
+                    memories.add(newpart);
+                }
+            }
+            
+        } catch(Exception e) {
+        }
+    }
+    //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
+    public void buildPowers(){ 
+        try{
+            FileReader out = new FileReader("powers.csv");
+            BufferedReader out2 = new BufferedReader(out);
+            CSVReader reader = new CSVReader(out2);
+            List<String[]> records = reader.readAll();
+            for (int i = 0; i < records.size(); i++) {
+                String[] record = records.get(i);
+                if(i != 0){
+                    int id = Integer.parseInt(record[0]);
+                    String name = record[1];
+                    int watts = Integer.parseInt(record[2]);
+                    powerPart newpart = new powerPart(id, name, watts);
+                    powers.add(newpart);
+                }
+            }
+            
+        } catch(Exception e) {
+        }
+    }
+    //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
+    public void buildDrives(){ 
+        try{
+            FileReader out = new FileReader("drives.csv");
+            BufferedReader out2 = new BufferedReader(out);
+            CSVReader reader = new CSVReader(out2);
+            List<String[]> records = reader.readAll();
+            for (int i = 0; i < records.size(); i++) {
+                String[] record = records.get(i);
+                if(i != 0){
+                    int id = Integer.parseInt(record[0]);
+                    String name = record[1];
+                    String type = record[2];
+                    int size = Integer.parseInt(record[3]);
+                    String measure = record[4];
+                    int rpm = Integer.parseInt(record[5]);
+                    int ssdtr = Integer.parseInt(record[5]);
+                    //powerPart newpart = new powerPart(id, name, watts);
+                    //powers.add(newpart);
+                }
+            }
+            
+        } catch(Exception e) {
+        }
+    }
 }
+/*
+
+*/
