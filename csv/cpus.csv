@@ -1,0 +1,2 @@
+CpuID,cpuName,cores,threads,ghzSpeed,memSize,memMeasure
+1,cpuTest1,1,4,3,5,gb
