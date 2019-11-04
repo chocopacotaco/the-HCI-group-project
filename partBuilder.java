@@ -9,6 +9,7 @@ public class partBuilder{
     ArrayList<memoryPart> memories = new ArrayList<memoryPart>();
     ArrayList<powerPart> powers = new ArrayList<powerPart>();
     ArrayList<drivePart> drives = new ArrayList<drivePart>();
+    ArrayList<currentPC> savedPCs = new ArrayList<currentPC>();
     public partBuilder(fileReader newInfo){
         buildCPUs();
         buildGPUs();
@@ -134,6 +135,7 @@ public class partBuilder{
                     }
                     currentPC savedPc = new currentPC(id,saveName,savedCpu,savedGpu,
                     savedBoard,savedMemories,savedPower,savedDrive);
+                    savedPCs.add(savedPc);
                 }
             }
         } catch(Exception e) {
