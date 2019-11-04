@@ -11,6 +11,12 @@ public class partBuilder{
     ArrayList<drivePart> drives = new ArrayList<drivePart>();
     public partBuilder(fileReader newInfo){
         buildCPUs();
+        buildGPUs();
+        buildBoards();
+        buildMemory();
+        buildPowers();
+        buildDrives();
+        buildPCs();
     }
     
     public memoryPart findMemory(int memoryfinder){
