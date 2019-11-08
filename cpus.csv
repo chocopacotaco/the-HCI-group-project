@@ -1,2 +1,4 @@
 CpuID,cpuName,cores,threads,ghzSpeed,memSize,memMeasure
-1,cpuTest1,1,4,3,5,gb
+1,cpuTest1,1,4,3,5,GB
+2,badcpi,4,1,1,1,Mb
+3,invidia,4,16,5,16,GB
