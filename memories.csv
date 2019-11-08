@@ -1,1 +1,4 @@
-memoryID,memoryName,socketType,memorySize,systemRAMType,ramStickAmount
+memoryID,memoryName,memoryformat,memorySize,systemRAMType,ramStickAmount
+1,Vengeance RGB,DIMM,16,GB,2
+2,PNY,DIMM,8,GB,1
+3,Dominator Platinum,DIMM,32,GB,2
