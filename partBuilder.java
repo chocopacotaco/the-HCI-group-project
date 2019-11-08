@@ -18,12 +18,93 @@ public class partBuilder{
         buildPowers();
         buildDrives();
         buildPCs();
+    } 
+    
+    public currentPC load(File file){
+        currentPC savedPc;
+        int id = 0;
+        String saveName = null;
+        int cpufinder = 0;
+        cpuPart savedCpu = null;
+        int gpufinder = 0;
+        gpuPart savedGpu = null;
+        int boardfinder = 0;
+        boardPart savedBoard = null;
+        int memoriesfinder = 0;
+        memoryPart savedMemories = null;
+        int powersfinder = 0;
+        powerPart savedPower = null;
+        int drivefinder = 0;
+        drivePart savedDrive = null;
+        try{
+            FileReader out = new FileReader(file);
+            BufferedReader out2 = new BufferedReader(out);
+            CSVReader reader = new CSVReader(out2);
+            List<String[]> records = reader.readAll();
+            for (int i = 0; i < records.size(); i++) {
+                String[] record = records.get(i);
+                if(i != 0){
+                    id = Integer.parseInt(record[0]);
+                    saveName = record[1];
+                    cpufinder = Integer.parseInt(record[2]);
+                    savedCpu = null;
+                    for(int j = 0; j < cpus.size(); j++){
+                        if(cpus.get(j).cpuID == cpufinder){
+                            savedCpu= cpus.get(j);
+                        }
+                    }
+                    gpufinder = Integer.parseInt(record[3]);
+                    savedGpu = null;
+                    for(int j = 0; j < gpus.size(); j++){
+                        if(gpus.get(j).gpuID == gpufinder){
+                            savedGpu= gpus.get(j);
+                        }
+                    }
+                    boardfinder = Integer.parseInt(record[4]);
+                    savedBoard = null;
+                    for(int j = 0; j < boards.size(); j++){
+                        if(boards.get(j).boardID == boardfinder){
+                            savedBoard= boards.get(j);
+                        }
+                    }
+                    memoriesfinder = Integer.parseInt(record[5]);
+                    savedMemories = null;
+                    for(int j = 0; j < memories.size(); j++){
+                        if(memories.get(j).memoryID == memoriesfinder){
+                            savedMemories= memories.get(j);
+                        }
+                    }
+                    powersfinder = Integer.parseInt(record[6]);
+                    savedPower = null;
+                    for(int j = 0; j < powers.size(); j++){
+                        if(powers.get(j).powerID == powersfinder){
+                            savedPower = powers.get(j);
+                        }
+                    }
+                    drivefinder = Integer.parseInt(record[7]);
+                    savedDrive = null;
+                    for(int j = 0; j < powers.size(); j++){
+                        if(drives.get(j).storageID == drivefinder){
+                            savedDrive = drives.get(j);
+                        }
+                    }
+                    //all parts created
+                }
+            }
+            
+        } catch(Exception e) {
+        }
+        savedPc = new currentPC(id,saveName,savedCpu,savedGpu,savedBoard,
+        savedMemories,savedPower,savedDrive);
+        saves.add(savedPc);
+        return savedPc;
     }
     
     public void save(currentPC newSave, String newName){
         boolean condition = true;
         if(newSave.saveID == 0){
             newSave.saveID = (saves.size() + 1);
+            newSave.saveName = newName;
         }
         for(int i = 0; i < saves.size(); i++){
             currentPC comparison = saves.get(i);
@@ -33,8 +114,29 @@ public class partBuilder{
                 condition = false;
             }
         }
-        if(condition){
-            saves.add(newSave);
+        try{
+            String saveLocation = newSave.saveName;
+            saveLocation = saveLocation + ".csv";
+            File outFile = new File(saveLocation);
+            outFile.createNewFile();
+            FileWriter out = new FileWriter(outFile);//csv
+            BufferedWriter out2 = new BufferedWriter(out);
+            CSVWriter writer = new CSVWriter(out2);
+            String[] header = {"SystemKey" , "DisplayName", "CpuID, GpuID", 
+            "BoardID", "MemoryID", "PowerID", "DriveID"};
+            writer.writeNext(header);
+            String[] line = new String[8];
+            line[0] = Integer.toString(newSave.saveID);
+            line[1] = newSave.saveName;
+            line[2] = Integer.toString(newSave.currentCpu.cpuID);
+            line[3] = Integer.toString(newSave.currentGpu.gpuID);
+            line[4] = Integer.toString(newSave.currentBoard.boardID);
+            line[5] = Integer.toString(newSave.currentMemory.memoryID);
+            line[8] = Integer.toString(newSave.currentPower.powerID);
+            line[7] = Integer.toString(newSave.currentDrive.storageID);
+            writer.writeNext(line);
+        } catch(Exception e) {
+            e.printStackTrace();
         }
     }
     
