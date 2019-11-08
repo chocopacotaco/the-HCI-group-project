@@ -21,16 +21,21 @@ public class partBuilder{
     }
     
     public void save(currentPC newSave, String newName){
+        boolean condition = true;
         if(newSave.saveID == 0){
             newSave.saveID = (saves.size() + 1);
         }
         for(int i = 0; i < saves.size(); i++){
             currentPC comparison = saves.get(i);
             if(newName == comparison.saveName){
-                
+                newSave.saveID = comparison.saveID;
+                comparison = newSave;
+                condition = false;
             }
         }
-        //saves.add(newSave);
+        if(condition){
+            saves.add(newSave);
+        }
     }
     
     public void finish(){
