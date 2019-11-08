@@ -2,15 +2,15 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 public class partBuilder{
-    fileReader getInfo;
+    //fileReader getInfo;
     ArrayList<cpuPart> cpus = new ArrayList<cpuPart>();
     ArrayList<gpuPart> gpus = new ArrayList<gpuPart>();
     ArrayList<boardPart> boards = new ArrayList<boardPart>();
     ArrayList<memoryPart> memories = new ArrayList<memoryPart>();
     ArrayList<powerPart> powers = new ArrayList<powerPart>();
     ArrayList<drivePart> drives = new ArrayList<drivePart>();
-    ArrayList<currentPC> savedPCs = new ArrayList<currentPC>();
-    public partBuilder(fileReader newInfo){
+    ArrayList<currentPC> saves = new ArrayList<currentPC>();
+    public partBuilder(){//fileReader newInfo
         buildCPUs();
         buildGPUs();
         buildBoards();
@@ -20,64 +20,43 @@ public class partBuilder{
         buildPCs();
     }
     
-    public memoryPart findMemory(int memoryfinder){
-        memoryPart savedCpu = null;
-        for(int j = 0; j < memories.size(); j++){
-            if(memories.get(j).memoryID == memoryfinder){
-                savedCpu= memories.get(j);
+    public void save(currentPC newSave, String newName){
+        if(newSave.saveID == 0){
+            newSave.saveID = (saves.size() + 1);
+        }
+        for(int i = 0; i < saves.size(); i++){
+            currentPC comparison = saves.get(i);
+            if(newName == comparison.saveName){
+                
             }
         }
-        return savedCpu;
+        //saves.add(newSave);
     }
     
-    public powerPart findPower(int powerfinder){
-        powerPart savedCpu = null;
-        for(int j = 0; j < powers.size(); j++){
-            if(powers.get(j).powerID == powerfinder){
-                savedCpu= powers.get(j);
+    public void finish(){
+        try{
+            FileWriter out = new FileWriter("saves.csv");//csv
+            BufferedWriter out2 = new BufferedWriter(out);
+            CSVWriter writer = new CSVWriter(out2);
+            String[] header = {"SystemKey" , "DisplayName", "CpuID, GpuID", 
+            "BoardID", "MemoryID", "PowerID", "DriveID"};
+            writer.writeNext(header);
+            for(int i = 0; i < saves.size(); i++){
+                currentPC record = saves.get(i);
+                String[] line = new String[8];
+                line[0] = Integer.toString(record.saveID);
+                line[1] = record.saveName;
+                line[2] = Integer.toString(record.currentCpu.cpuID);
+                line[3] = Integer.toString(record.currentGpu.gpuID);
+                line[4] = Integer.toString(record.currentBoard.boardID);
+                line[5] = Integer.toString(record.currentMemory.memoryID);
+                line[8] = Integer.toString(record.currentPower.powerID);
+                line[7] = Integer.toString(record.currentDrive.storageID);
+                writer.writeNext(line);
             }
+        } catch(Exception e){
+            e.printStackTrace();
         }
-        return savedCpu;
-    }
-    
-    public drivePart findDrives(int drivefinder){
-        drivePart savedCpu = null;
-        for(int j = 0; j < drives.size(); j++){
-            if(drives.get(j).storageID == drivefinder){
-                savedCpu= drives.get(j);
-            }
-        }
-        return savedCpu;
-    }
-    
-    public boardPart findBoard(int boardfinder){
-        boardPart savedCpu = null;
-        for(int j = 0; j < boards.size(); j++){
-            if(boards.get(j).boardID == boardfinder){
-                savedCpu= boards.get(j);
-            }
-        }
-        return savedCpu;
-    }
-    
-    public gpuPart findGPU(int gpufinder){
-        gpuPart savedGpu = null;
-        for(int j = 0; j < gpus.size(); j++){
-            if(gpus.get(j).gpuID == gpufinder){
-                savedGpu= gpus.get(j);
-            }
-        }
-        return savedGpu;
-    }
-    
-    public cpuPart findCPU(int cpufinder){
-        cpuPart savedCpu = null;
-        for(int j = 0; j < cpus.size(); j++){
-            if(cpus.get(j).cpuID == cpufinder){
-                savedCpu= cpus.get(j);
-            }
-        }
-        return savedCpu;
     }
     
     public void buildPCs(){
@@ -135,7 +114,7 @@ public class partBuilder{
                     }
                     currentPC savedPc = new currentPC(id,saveName,savedCpu,savedGpu,
                     savedBoard,savedMemories,savedPower,savedDrive);
-                    savedPCs.add(savedPc);
+                    saves.add(savedPc);
                 }
             }
         } catch(Exception e) {
@@ -294,6 +273,65 @@ public class partBuilder{
             
         } catch(Exception e) {
         }
+    }
+    public memoryPart findMemory(int memoryfinder){
+        memoryPart savedCpu = null;
+        for(int j = 0; j < memories.size(); j++){
+            if(memories.get(j).memoryID == memoryfinder){
+                savedCpu= memories.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public powerPart findPower(int powerfinder){
+        powerPart savedCpu = null;
+        for(int j = 0; j < powers.size(); j++){
+            if(powers.get(j).powerID == powerfinder){
+                savedCpu= powers.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public drivePart findDrives(int drivefinder){
+        drivePart savedCpu = null;
+        for(int j = 0; j < drives.size(); j++){
+            if(drives.get(j).storageID == drivefinder){
+                savedCpu= drives.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public boardPart findBoard(int boardfinder){
+        boardPart savedCpu = null;
+        for(int j = 0; j < boards.size(); j++){
+            if(boards.get(j).boardID == boardfinder){
+                savedCpu= boards.get(j);
+            }
+        }
+        return savedCpu;
+    }
+    
+    public gpuPart findGPU(int gpufinder){
+        gpuPart savedGpu = null;
+        for(int j = 0; j < gpus.size(); j++){
+            if(gpus.get(j).gpuID == gpufinder){
+                savedGpu= gpus.get(j);
+            }
+        }
+        return savedGpu;
+    }
+    
+    public cpuPart findCPU(int cpufinder){
+        cpuPart savedCpu = null;
+        for(int j = 0; j < cpus.size(); j++){
+            if(cpus.get(j).cpuID == cpufinder){
+                savedCpu= cpus.get(j);
+            }
+        }
+        return savedCpu;
     }
 }
 /*
