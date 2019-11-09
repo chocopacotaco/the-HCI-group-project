@@ -244,8 +244,10 @@ public class partBuilder{
                     double ghzSpeed = Double.parseDouble(record[4]);
                     double memSize = Double.parseDouble(record[5]);
                     String memMeasure = record[6];
+                    int power = Integer.parseInt(record[7]);
+                    double price = Double.parseDouble(record[8]);
                     cpuPart newpart = new cpuPart(id, name, cores, threads,
-                    ghzSpeed, memSize, memMeasure);
+                    ghzSpeed, memSize, memMeasure, power, price);
                     cpus.add(newpart);
                 }
             }
@@ -270,8 +272,10 @@ public class partBuilder{
                     double memory = Double.parseDouble(record[4]);
                     int clockSpeed = Integer.parseInt(record[5]);
                     int memClock = Integer.parseInt(record[6]);
+                    int power = Integer.parseInt(record[7]);
+                    double price = Double.parseDouble(record[8]);
                     gpuPart newpart = new gpuPart(id, name, chipName, bus,
-                    memory, clockSpeed, memClock);
+                    memory, clockSpeed, memClock, power, price);
                     gpus.add(newpart);
                 }
             }
@@ -300,9 +304,11 @@ public class partBuilder{
                     int ramMax = Integer.parseInt(record[8]);
                     int peripAva = Integer.parseInt(record[9]);
                     int peripTotal = Integer.parseInt(record[10]);
+                    int power = Integer.parseInt(record[11]);
+                    double price = Double.parseDouble(record[12]);
                     boardPart newpart = new boardPart(id,name,sockNum,
                     sockType,maxSup,gpuSocks,ramSocks,ramSockType,ramMax,
-                    peripAva,peripTotal);
+                    peripAva,peripTotal, power, price);
                     boards.add(newpart);
                 }
             }
@@ -326,8 +332,10 @@ public class partBuilder{
                     int memSize = Integer.parseInt(record[3]);
                     String ramType = record[4];
                     int ramAmount = Integer.parseInt(record[5]);
+                    int power = Integer.parseInt(record[6]);
+                    double price = Double.parseDouble(record[7]);
                     memoryPart newpart = new memoryPart(id, name, sockType,
-                    memSize,ramType, ramAmount);
+                    memSize,ramType, ramAmount, power, price);
                     memories.add(newpart);
                 }
             }
@@ -348,7 +356,8 @@ public class partBuilder{
                     int id = Integer.parseInt(record[0]);
                     String name = record[1];
                     int watts = Integer.parseInt(record[2]);
-                    powerPart newpart = new powerPart(id, name, watts);
+                    double price = Double.parseDouble(record[3]);
+                    powerPart newpart = new powerPart(id, name, watts, price);
                     powers.add(newpart);
                 }
             }
@@ -372,9 +381,12 @@ public class partBuilder{
                     int size = Integer.parseInt(record[3]);
                     String measure = record[4];
                     int rpm = Integer.parseInt(record[5]);
-                    int ssdtr = Integer.parseInt(record[5]);
-                    //powerPart newpart = new powerPart(id, name, watts);
-                    //powers.add(newpart);
+                    int ssdtr = Integer.parseInt(record[6]);
+                    int power = Integer.parseInt(record[7]);
+                    double price = Double.parseDouble(record[8]);
+                    drivePart newpart = new drivePart(id, name, type, size,
+                    measure, rpm, ssdtr, power, price);
+                    drives.add(newpart);
                 }
             }
             

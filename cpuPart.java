@@ -6,8 +6,11 @@ public class cpuPart{
     double ghzSpeed;
     double memSize;
     String memMeasure;
+    int power;
+    double price;
     public cpuPart(int newID, String newName, int newCore, int newThreads, 
-    double newSpeed, double newMemSize, String newMemMeasure){
+    double newSpeed, double newMemSize, String newMemMeasure, 
+    int newPower, double newPrice){
         cpuID = newID;
         cpuName = newName;
         cores = newCore;
@@ -15,6 +18,8 @@ public class cpuPart{
         ghzSpeed = newSpeed;
         memSize = newMemSize;
         memMeasure = newMemMeasure;
+        power = newPower;
+        price = newPrice;
         //AMD Ryzen 7
     }
     

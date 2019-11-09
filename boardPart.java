@@ -10,9 +10,11 @@ public class boardPart{
     int ramMaxMemory;
     int peripheralSocketsAvaliable;
     int peripheralSocketsTotal;
+    int power;
+    double price;
     public boardPart(int newID, String newName, int newSocketNum, String newSocketType,
     String newMaxSup, int newGpuSocks, int newRamSocks, String newRamSockType,
-    int newRamMax, int newPeripAva, int newPeripTotal){
+    int newRamMax, int newPeripAva, int newPeripTotal, int newPower, double newPrice){
         boardID = newID;
         boardName = newName;
         cpuSocket = newSocketNum;
@@ -24,6 +26,8 @@ public class boardPart{
         ramMaxMemory = newRamMax;
         peripheralSocketsAvaliable = newPeripAva;
         peripheralSocketsTotal = newPeripTotal;
+        power = newPower;
+        price = newPrice;
         
     }
 

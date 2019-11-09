@@ -7,8 +7,10 @@ public class drivePart{
     String sizeMeasure;
     int hardDriveRPM;
     int ssdDTR;
+    int power;
+    double price;
     public drivePart(int newID, String newName, String newStorType, int newStorSize,
-    String newSizeMeasure, int newRPM, int newDTR){
+    String newSizeMeasure, int newRPM, int newDTR, int newPower, double newPrice){
         // initialise instance variables
         storageID = newID;
         storageName = newName;
@@ -17,5 +19,7 @@ public class drivePart{
         sizeMeasure = newSizeMeasure;
         hardDriveRPM = newRPM;
         ssdDTR = newDTR;
+        power = newPower;
+        price = newPrice;
     }
 }
