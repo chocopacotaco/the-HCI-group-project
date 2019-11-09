@@ -1,4 +1,4 @@
-gpuID,gpuName,maker,bus,memory,gpuClockSpeed,memoryClock
-1,Radeon RX,AMD,192,8,1405,8000
-2,GeForce RTX,NIVIDIA,256,11,1350,7500
-3,THATACO,BELLISH,192,9.5,1380,9000
+gpuID,gpuName,maker,bus,memory,gpuClockSpeed,memoryClock,power,price
+1,Radeon RX,AMD,192,8,1405,8000,50,179.99
+2,GeForce RTX,NIVIDIA,256,11,1350,7500,200,1306.99
+3,THATACO,BELLISH,192,9.5,1380,9000,35,214.25

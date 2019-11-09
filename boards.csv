@@ -1,2 +1,2 @@
-boardID,boardName,cpuSockets,cpuSocketType,cpuMaxSupport,gpuSockets,ramSockets,ramSocketType,ramMaxMemory,peripheralSocketsAvaliable,peripheralSocketsTotal,
-1,holder,1,ph,ph,1,1,ph,1,1,1,1
+boardID,boardName,cpuSockets,cpuSocketType,cpuMaxSupport,gpuSockets,ramSockets,ramSocketType,ramMaxMemory,peripheralSocketsAvaliable,peripheralSocketsTotal,power,price
+1,holder,1,ph,ph,1,1,ph,1,1,1,30,89.99

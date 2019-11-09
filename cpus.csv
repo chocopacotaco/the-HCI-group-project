@@ -1,4 +1,4 @@
-CpuID,cpuName,cores,threads,ghzSpeed,memSize,memMeasure
-1,cpuTest1,1,4,3,5,GB
-2,badcpi,4,1,1,1,Mb
-3,invidia,4,16,5,16,GB
+CpuID,cpuName,cores,threads,ghzSpeed,memSize,memMeasure,power,price
+1,cpuTest1,1,4,3,5,GB,3,50.75
+2,badcpi,4,1,1,1,Mb,12,100.75
+3,invidia,4,16,5,16,GB,10,99.85
