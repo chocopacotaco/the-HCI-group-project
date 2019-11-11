@@ -93,6 +93,7 @@ public class partBuilder{
             }
             
         } catch(Exception e) {
+        	e.printStackTrace();
         }
         savedPc = new currentPC(id,saveName,savedCpu,savedGpu,savedBoard,
         savedMemories,savedPower,savedDrive);
@@ -117,12 +118,13 @@ public class partBuilder{
         try{
             String saveLocation = newSave.saveName;
             saveLocation = saveLocation + ".csv";
+            // for eclipse: "C:/Users/dh08020.AD/eclipse-workspace/test2/src/" + saveLocation + ".csv";
             File outFile = new File(saveLocation);
             outFile.createNewFile();
             FileWriter out = new FileWriter(outFile);//csv
             BufferedWriter out2 = new BufferedWriter(out);
             CSVWriter writer = new CSVWriter(out2);
-            String[] header = {"SystemKey" , "DisplayName", "CpuID, GpuID", 
+            String[] header = {"SystemKey" , "DisplayName", "CpuID", "GpuID", 
             "BoardID", "MemoryID", "PowerID", "DriveID"};
             writer.writeNext(header);
             String[] line = new String[8];
@@ -132,9 +134,10 @@ public class partBuilder{
             line[3] = Integer.toString(newSave.currentGpu.gpuID);
             line[4] = Integer.toString(newSave.currentBoard.boardID);
             line[5] = Integer.toString(newSave.currentMemory.memoryID);
-            line[8] = Integer.toString(newSave.currentPower.powerID);
+            line[6] = Integer.toString(newSave.currentPower.powerID);
             line[7] = Integer.toString(newSave.currentDrive.storageID);
             writer.writeNext(line);
+            writer.close();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -143,6 +146,7 @@ public class partBuilder{
     public void finish(){
         try{
             FileWriter out = new FileWriter("saves.csv");//csv
+            //for eclipse: FileWriter out = new FileWriter("C:/Users/dh08020.AD/eclipse-workspace/test2/src/saves.csv");
             BufferedWriter out2 = new BufferedWriter(out);
             CSVWriter writer = new CSVWriter(out2);
             String[] header = {"SystemKey" , "DisplayName", "CpuID, GpuID", 
@@ -169,6 +173,7 @@ public class partBuilder{
     public void buildPCs(){
         try{
             FileReader out = new FileReader("saves.csv");
+            //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/saves.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -225,12 +230,14 @@ public class partBuilder{
                 }
             }
         } catch(Exception e) {
+        	e.printStackTrace();
         }
     }
     
     public void buildCPUs(){
         try{
             FileReader out = new FileReader("cpus.csv");
+            //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/cpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -253,12 +260,14 @@ public class partBuilder{
             }
             
         } catch(Exception e) {
+        	e.printStackTrace();
         }
     }
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildGPUs(){ 
         try{
             FileReader out = new FileReader("gpus.csv");
+            //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/gpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -287,6 +296,7 @@ public class partBuilder{
     public void buildBoards(){ 
         try{
             FileReader out = new FileReader("boards.csv");
+            //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/boards.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -314,12 +324,14 @@ public class partBuilder{
             }
             
         } catch(Exception e) {
+        	e.printStackTrace();
         }
     }
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildMemory(){ 
         try{
             FileReader out = new FileReader("memories.csv");
+            //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/memories.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -341,12 +353,14 @@ public class partBuilder{
             }
             
         } catch(Exception e) {
+        	e.printStackTrace();
         }
     }
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildPowers(){ 
         try{
             FileReader out = new FileReader("powers.csv");
+            //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/powers.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -363,12 +377,14 @@ public class partBuilder{
             }
             
         } catch(Exception e) {
+        	e.printStackTrace();
         }
     }
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildDrives(){ 
         try{
             FileReader out = new FileReader("drives.csv");
+            //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/drives.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -391,6 +407,7 @@ public class partBuilder{
             }
             
         } catch(Exception e) {
+        	e.printStackTrace();
         }
     }
     public memoryPart findMemory(int memoryfinder){
