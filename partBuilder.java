@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -118,6 +119,7 @@ public class partBuilder{
             String saveLocation = newSave.saveName;
             saveLocation = saveLocation + ".csv";
             File outFile = new File(saveLocation);
+            System.out.println(outFile.getCanonicalPath());
             outFile.createNewFile();
             FileWriter out = new FileWriter(outFile);//csv
             BufferedWriter out2 = new BufferedWriter(out);
@@ -230,7 +232,7 @@ public class partBuilder{
     
     public void buildCPUs(){
         try{
-            FileReader out = new FileReader("cpus.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/cpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -258,7 +260,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildGPUs(){ 
         try{
-            FileReader out = new FileReader("gpus.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/gpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -286,7 +288,8 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildBoards(){ 
         try{
-            FileReader out = new FileReader("boards.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/boards.csv");
+          
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -319,7 +322,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildMemory(){ 
         try{
-            FileReader out = new FileReader("memories.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/memories.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -346,7 +349,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildPowers(){ 
         try{
-            FileReader out = new FileReader("powers.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/powers.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -368,7 +371,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildDrives(){ 
         try{
-            FileReader out = new FileReader("drives.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/drives.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -384,9 +387,10 @@ public class partBuilder{
                     int ssdtr = Integer.parseInt(record[6]);
                     int power = Integer.parseInt(record[7]);
                     double price = Double.parseDouble(record[8]);
-                    drivePart newpart = new drivePart(id, name, type, size,
-                    measure, rpm, ssdtr, power, price);
+                    drivePart newpart = new drivePart(id, name, type, size,measure, rpm, ssdtr, power, price);
+                   
                     drives.add(newpart);
+                    
                 }
             }
             
@@ -453,6 +457,3 @@ public class partBuilder{
         return savedCpu;
     }
 }
-/*
-
-*/
