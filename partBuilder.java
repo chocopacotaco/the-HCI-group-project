@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -118,6 +119,7 @@ public class partBuilder{
             String saveLocation = newSave.saveName;
             saveLocation = saveLocation + ".csv";
             File outFile = new File(saveLocation);
+            System.out.println(outFile.getCanonicalPath());
             outFile.createNewFile();
             FileWriter out = new FileWriter(outFile);//csv
             BufferedWriter out2 = new BufferedWriter(out);
@@ -132,9 +134,12 @@ public class partBuilder{
             line[3] = Integer.toString(newSave.currentGpu.gpuID);
             line[4] = Integer.toString(newSave.currentBoard.boardID);
             line[5] = Integer.toString(newSave.currentMemory.memoryID);
-            line[8] = Integer.toString(newSave.currentPower.powerID);
+            line[6] = Integer.toString(newSave.currentPower.powerID);
             line[7] = Integer.toString(newSave.currentDrive.storageID);
+            System.out.println(line[0]);
+            
             writer.writeNext(line);
+           
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -159,6 +164,7 @@ public class partBuilder{
                 line[5] = Integer.toString(record.currentMemory.memoryID);
                 line[8] = Integer.toString(record.currentPower.powerID);
                 line[7] = Integer.toString(record.currentDrive.storageID);
+                System.out.println(line);
                 writer.writeNext(line);
             }
         } catch(Exception e){
@@ -230,7 +236,7 @@ public class partBuilder{
     
     public void buildCPUs(){
         try{
-            FileReader out = new FileReader("cpus.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/cpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -258,7 +264,8 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildGPUs(){ 
         try{
-            FileReader out = new FileReader("gpus.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/gpus.csv");
+            
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -286,7 +293,8 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildBoards(){ 
         try{
-            FileReader out = new FileReader("boards.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/boards.csv");
+          
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -319,7 +327,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildMemory(){ 
         try{
-            FileReader out = new FileReader("memories.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/memories.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -346,7 +354,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildPowers(){ 
         try{
-            FileReader out = new FileReader("powers.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/powers.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
@@ -358,6 +366,7 @@ public class partBuilder{
                     int watts = Integer.parseInt(record[2]);
                     double price = Double.parseDouble(record[3]);
                     powerPart newpart = new powerPart(id, name, watts, price);
+               
                     powers.add(newpart);
                 }
             }
@@ -366,33 +375,51 @@ public class partBuilder{
         }
     }
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
+  //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildDrives(){ 
         try{
-            FileReader out = new FileReader("drives.csv");
+            FileReader out = new FileReader("C:/Users/studm/workspace/HCI2/src/csv/drives.csv");
+            
+            
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
             List<String[]> records = reader.readAll();
+            
             for (int i = 0; i < records.size(); i++) {
                 String[] record = records.get(i);
+                
                 if(i != 0){
+                
                     int id = Integer.parseInt(record[0]);
+                    
                     String name = record[1];
+                   
                     String type = record[2];
+                    
                     int size = Integer.parseInt(record[3]);
+                    
                     String measure = record[4];
-                    int rpm = Integer.parseInt(record[5]);
+                   
+                    String rpm = String.valueOf(record[5]);
+                    
                     int ssdtr = Integer.parseInt(record[6]);
+                    
                     int power = Integer.parseInt(record[7]);
+                    
                     double price = Double.parseDouble(record[8]);
+                
                     drivePart newpart = new drivePart(id, name, type, size,
                     measure, rpm, ssdtr, power, price);
+                    
                     drives.add(newpart);
                 }
+              
             }
             
         } catch(Exception e) {
         }
     }
+    
     public memoryPart findMemory(int memoryfinder){
         memoryPart savedCpu = null;
         for(int j = 0; j < memories.size(); j++){
@@ -453,6 +480,3 @@ public class partBuilder{
         return savedCpu;
     }
 }
-/*
-
-*/

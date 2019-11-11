@@ -1,3 +1,4 @@
+  
 public class drivePart{
     // instance variables - replace the example below with your own
     int storageID;
@@ -5,12 +6,12 @@ public class drivePart{
     String storageType;
     int storageSize;
     String sizeMeasure;
-    int hardDriveRPM;
+    String hardDriveRPM;
     int ssdDTR;
     int power;
     double price;
     public drivePart(int newID, String newName, String newStorType, int newStorSize,
-    String newSizeMeasure, int newRPM, int newDTR, int newPower, double newPrice){
+    String newSizeMeasure, String newRPM, int newDTR, int newPower, double newPrice){
         // initialise instance variables
         storageID = newID;
         storageName = newName;
