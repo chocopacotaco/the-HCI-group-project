@@ -126,29 +126,36 @@ public class MainScreen {
 		comboBox_6.setBounds(506, 0, 98, 22);
 		frame.getContentPane().add(comboBox_6);
 		
+		int cpuX = 268, 	cpuY = 45;
+		int memX = 433, 	memY = 130;
+		int gpuX = 193, 	gpuY = 130;
+		int driveX = 268, 	driveY = 215;
+		int psuX = 358, 	psuY = 215;
+		int boardX = 358, boardY = 45;
+		
 		JButton cpuButton = new JButton("cpu");
-		cpuButton.setBounds(268, 65, 60, 60);
-		frame.getContentPane().add(cpuButton);
+		cpuButton.setBounds(cpuX, cpuY, 60, 60);
+		frame.getContentPane().add(cpuButton);	
 		
 		JButton memoryButton = new JButton("ram");
-		memoryButton.setBounds(433, 140, 60, 60);
+		memoryButton.setBounds(memX, memY, 60, 60);
 		frame.getContentPane().add(memoryButton);
 		
 		JButton driveButton = new JButton("drive");
-		driveButton.setBounds(268, 215, 60, 60);
-		frame.getContentPane().add(driveButton);
+		driveButton.setBounds(driveX, driveY, 60, 60);
+		frame.getContentPane().add(driveButton);	
 		
 		JButton psuButton = new JButton("psu");
-		psuButton.setBounds(358, 215, 60, 60);
-		frame.getContentPane().add(psuButton);
+		psuButton.setBounds(psuX, psuY, 60, 60);
+		frame.getContentPane().add(psuButton);	
 		
 		JButton gpuButton = new JButton("gpu");
 		gpuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		gpuButton.setBounds(193, 140, 60, 60);
-		frame.getContentPane().add(gpuButton);
+		gpuButton.setBounds(gpuX, gpuY, 60, 60);
+		frame.getContentPane().add(gpuButton);	
 		
 		JButton motherboardButton = new JButton("MB");
-		motherboardButton.setBounds(358, 65, 60, 60);
+		motherboardButton.setBounds(boardX, boardY, 60, 60);
 		frame.getContentPane().add(motherboardButton);
 		
 		horz = new JTextField();
@@ -161,19 +168,19 @@ public class MainScreen {
 		frame.getContentPane().add(vert);
 		vert.setColumns(10);
 		
-		double cpuCenterX = 268+30;
-		double cpuCenterY = 65+30;
+		double cpuCenterX = cpuX+30;
+		double cpuCenterY = cpuY+30;
 		
-		double gpuCenterX = 193+30;
-		double gpuCenterY = 140+30;
+		double gpuCenterX = gpuX+30;
+		double gpuCenterY = gpuY+30;
 		
 		double driveCenterX = cpuCenterX;
-		double driveCenterY = 215+30;
+		double driveCenterY = driveY+30;
 		
-		double memCenterX = 433+30;
+		double memCenterX = memX+30;
 		double memCenterY = gpuCenterY;
 		
-		double psuCenterX = 358+30;
+		double psuCenterX = psuX+30;
 		double psuCenterY = driveCenterY;
 		
 		double boardCenterX = psuCenterX;
