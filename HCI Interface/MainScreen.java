@@ -5,8 +5,16 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.*;
+import javax.swing.JPanel;
 
 public class MainScreen {
 
@@ -14,6 +22,8 @@ public class MainScreen {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField horz;
+	private JTextField vert;
 
 	/**
 	 * Launch the application.
@@ -43,7 +53,7 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 704, 410);
+		frame.setBounds(100, 100, 704, 411);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -84,35 +94,198 @@ public class MainScreen {
 		frame.getContentPane().add(comboBox_5);
 		
 		textField = new JTextField();
-		textField.setBounds(44, 309, 167, 22);
+		textField.setBounds(44, 325, 167, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(248, 309, 167, 22);
+		textField_1.setBounds(248, 325, 167, 22);
 		frame.getContentPane().add(textField_1);
-		frame.add(new JLabel(new ImageIcon("C:/Users/studm/Documents/computerPic.png")));
+		frame.getContentPane().add(new JLabel(new ImageIcon("C:/Users/studm/Documents/computerPic.png")));
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(454, 309, 167, 22);
+		textField_2.setBounds(454, 325, 167, 22);
 		frame.getContentPane().add(textField_2);
 		
 		JLabel lblCurentParts = new JLabel("Current Parts");
-		lblCurentParts.setBounds(97, 292, 81, 16);
+		lblCurentParts.setBounds(97, 308, 81, 16);
 		frame.getContentPane().add(lblCurentParts);
 		
 		JLabel lblPerformance = new JLabel("Performance");
-		lblPerformance.setBounds(292, 292, 81, 16);
+		lblPerformance.setBounds(292, 308, 81, 16);
 		frame.getContentPane().add(lblPerformance);
 		
 		JLabel lblOver = new JLabel("Total Cost");
-		lblOver.setBounds(484, 292, 81, 16);
+		lblOver.setBounds(484, 308, 81, 16);
 		frame.getContentPane().add(lblOver);
 		
 		JComboBox comboBox_6 = new JComboBox();
 		comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"Storage", "Storage 1", "Storage 2", "Storage 3"}));
 		comboBox_6.setBounds(506, 0, 98, 22);
 		frame.getContentPane().add(comboBox_6);
+		
+		int cpuX = 268, 	cpuY = 45;
+		int memX = 433, 	memY = 130;
+		int gpuX = 193, 	gpuY = 130;
+		int driveX = 268, 	driveY = 215;
+		int psuX = 358, 	psuY = 215;
+		int boardX = 358, boardY = 45;
+		
+		JButton cpuButton = new JButton("cpu");
+		cpuButton.setBounds(cpuX, cpuY, 60, 60);
+		frame.getContentPane().add(cpuButton);
+		cpuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PartsScreen partsWindow = new PartsScreen();
+				String[] args = null;
+				partsWindow.main(args);
+				frame.dispose();
+			}			
+		});
+		
+		JButton memoryButton = new JButton("ram");
+		memoryButton.setBounds(memX, memY, 60, 60);
+		frame.getContentPane().add(memoryButton);
+		memoryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PartsScreen partsWindow = new PartsScreen();
+				String[] args = null;
+				partsWindow.main(args);
+				frame.dispose();
+			}			
+		});
+		
+		JButton driveButton = new JButton("drive");
+		driveButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		driveButton.setBounds(driveX, driveY, 60, 60);
+		frame.getContentPane().add(driveButton);	
+		driveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PartsScreen partsWindow = new PartsScreen();
+				String[] args = null;
+				partsWindow.main(args);
+				frame.dispose();
+			}			
+		});
+		
+		JButton psuButton = new JButton("psu");
+		psuButton.setBounds(psuX, psuY, 60, 60);
+		frame.getContentPane().add(psuButton);
+		psuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PartsScreen partsWindow = new PartsScreen();
+				String[] args = null;
+				partsWindow.main(args);
+				frame.dispose();
+			}			
+		});
+		
+		JButton gpuButton = new JButton("gpu");
+		gpuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		gpuButton.setBounds(gpuX, gpuY, 60, 60);
+		frame.getContentPane().add(gpuButton);
+		gpuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PartsScreen partsWindow = new PartsScreen();
+				String[] args = null;
+				partsWindow.main(args);
+				frame.dispose();
+			}			
+		});
+		
+		JButton motherboardButton = new JButton("MB");
+		motherboardButton.setBounds(boardX, boardY, 60, 60);
+		frame.getContentPane().add(motherboardButton);
+		motherboardButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PartsScreen partsWindow = new PartsScreen();
+				String[] args = null;
+				partsWindow.main(args);
+				frame.dispose();
+			}			
+		});
+		/*
+		horz = new JTextField();
+		horz.setBounds(0, 170, 687, 1);
+		frame.getContentPane().add(horz);
+		horz.setColumns(10);
+		
+		vert = new JTextField();
+		vert.setBounds(344, 0, 1, 370);
+		frame.getContentPane().add(vert);
+		vert.setColumns(10);
+		*/
+		double cpuCenterX = cpuX+30;
+		double cpuCenterY = cpuY+30;
+		
+		double gpuCenterX = gpuX+30;
+		double gpuCenterY = gpuY+30;
+		
+		double driveCenterX = cpuCenterX;
+		double driveCenterY = driveY+30;
+		
+		double memCenterX = memX+30;
+		double memCenterY = gpuCenterY;
+		
+		double psuCenterX = psuX+30;
+		double psuCenterY = driveCenterY;
+		
+		double boardCenterX = psuCenterX;
+		double boardCenterY = cpuCenterY;
+				
+		JPanel panel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				Graphics2D g2 = (Graphics2D) g;
+				
+				Shape cpuToGpu = new Line2D.Double(cpuCenterX, cpuCenterY, gpuCenterX, gpuCenterY);
+				Shape cpuToDrive = new Line2D.Double(cpuCenterX, cpuCenterY, driveCenterX, driveCenterY);
+				Shape cpuToPsu = new Line2D.Double(cpuCenterX, cpuCenterY, psuCenterX, psuCenterY);
+				Shape cpuToRam = new Line2D.Double(cpuCenterX, cpuCenterY, memCenterX, memCenterY);
+				Shape cpuToMB = new Line2D.Double(cpuCenterX, cpuCenterY, boardCenterX, boardCenterY);
+				
+				Shape gpuToDrive = new Line2D.Double(gpuCenterX, gpuCenterY, driveCenterX, driveCenterY);
+				Shape gpuToPsu = new Line2D.Double(gpuCenterX, gpuCenterY, psuCenterX, psuCenterY);
+				Shape gpuToRam = new Line2D.Double(gpuCenterX, gpuCenterY, memCenterX, memCenterY);
+				Shape gpuToMB = new Line2D.Double(gpuCenterX, gpuCenterY, boardCenterX, boardCenterY);
+				
+				Shape driveToPsu = new Line2D.Double(driveCenterX, driveCenterY, psuCenterX, psuCenterY);
+				Shape driveToRam = new Line2D.Double(driveCenterX, driveCenterY, memCenterX, memCenterY);
+				Shape driveToMB = new Line2D.Double(driveCenterX, driveCenterY, boardCenterX, boardCenterY);
+				
+				Shape psuToRam = new Line2D.Double(psuCenterX, psuCenterY, memCenterX, memCenterY);
+				Shape psuToMB = new Line2D.Double(psuCenterX, psuCenterY, boardCenterX, boardCenterY);
+				
+				Shape ramToMB = new Line2D.Double(memCenterX, memCenterY, boardCenterX, boardCenterY);
+				
+						g2.draw(cpuToGpu);
+						g2.draw(cpuToDrive);
+						g2.draw(cpuToPsu);
+						g2.draw(cpuToRam);
+						g2.draw(cpuToMB);
+						g2.draw(gpuToDrive);
+						g2.draw(gpuToPsu);
+						g2.draw(gpuToRam);
+						g2.draw(gpuToMB);
+						g2.draw(driveToPsu);
+						g2.draw(driveToRam);
+						g2.draw(driveToMB);
+						g2.draw(psuToRam);
+						g2.draw(psuToMB);
+						g2.draw(ramToMB);						
+			}
+		};
+		panel.setBounds(0, 0, 688, 372);
+		panel.setVisible(false);
+		frame.getContentPane().add(panel);
+		
+		JButton panelToggleBtn = new JButton("toggle");
+		panelToggleBtn.setBounds(10, 250, 89, 23);
+		frame.getContentPane().add(panelToggleBtn);
+		panelToggleBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(true);
+			}			
+		});
 	}
 }
