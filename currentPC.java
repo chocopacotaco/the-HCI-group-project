@@ -56,4 +56,14 @@ public class currentPC{
         return totalPower;
     }
     
+    public boolean powerAccept(){
+        int totalPower = powerCheck();
+        boolean checker;
+        if(totalPower < 0){
+            checker = false;
+        } else {
+            checker = true;
+        }
+        return checker;
+    }
 }
