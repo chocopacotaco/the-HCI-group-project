@@ -5,7 +5,7 @@ public class main{
         currentPC testpc = test.saves.get(0);
         System.out.println(test.saves.size());
         System.out.println(test.cpus.size());
-        test.save(testpc, "workDamnit");
+        //test.save(testpc, "workDamnit");
     }
     
 }

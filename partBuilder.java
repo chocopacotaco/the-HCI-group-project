@@ -117,7 +117,10 @@ public class partBuilder{
         }
         try{
             String saveLocation = newSave.saveName;
+            
             saveLocation = saveLocation + ".csv";
+            //File temp = new File(saveLocation);
+            //saveLocation = temp.getAbsolutePath();
             // for eclipse: "C:/Users/dh08020.AD/eclipse-workspace/test2/src/" + saveLocation + ".csv";
             File outFile = new File(saveLocation);
             outFile.createNewFile();
@@ -172,7 +175,17 @@ public class partBuilder{
     
     public void buildPCs(){
         try{
-            FileReader out = new FileReader("saves.csv");
+            File temp = new File("csv/saves.csv");
+        	
+    	    String absolutePath = temp.getAbsolutePath();
+    	    //System.out.println("File path : " + absolutePath);
+    	    
+    	    String filePath = absolutePath.substring(0,absolutePath.lastIndexOf(File.separator));
+				
+    	    //System.out.println("File path : " + filePath);
+            
+            File file = new File(filePath);
+            FileReader out = new FileReader("csv\\saves.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/saves.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -236,7 +249,12 @@ public class partBuilder{
     
     public void buildCPUs(){
         try{
-            FileReader out = new FileReader("cpus.csv");
+            File temp = new File("csv/cpus.csv");
+        	
+    	    String absolutePath = temp.getAbsolutePath();
+    	    //System.out.println("File path : " + absolutePath);
+            //File file = new File(filePath);
+            FileReader out = new FileReader(absolutePath);
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/cpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -251,8 +269,8 @@ public class partBuilder{
                     double ghzSpeed = Double.parseDouble(record[4]);
                     double memSize = Double.parseDouble(record[5]);
                     String memMeasure = record[6];
-                    int power = Integer.parseInt(record[7]);
-                    double price = Double.parseDouble(record[8]);
+                    int power = 8;//Integer.parseInt(record[7]);
+                    double price = 10.3;//Double.parseDouble(record[8]);
                     cpuPart newpart = new cpuPart(id, name, cores, threads,
                     ghzSpeed, memSize, memMeasure, power, price);
                     cpus.add(newpart);
@@ -266,7 +284,12 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildGPUs(){ 
         try{
-            FileReader out = new FileReader("gpus.csv");
+            File temp = new File("csv/gpus.csv");
+        	
+    	    String absolutePath = temp.getAbsolutePath();
+    	    //System.out.println("File path : " + absolutePath);
+            //File file = new File(filePath);
+            FileReader out = new FileReader(absolutePath);
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/gpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -295,7 +318,13 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildBoards(){ 
         try{
-            FileReader out = new FileReader("boards.csv");
+            File temp = new File("csv/boards.csv");
+        	
+    	    String absolutePath = temp.getAbsolutePath();
+    	    //System.out.println("File path : " + absolutePath);
+            //File file = new File(filePath);
+            FileReader out = new FileReader(absolutePath);
+            //FileReader out = new FileReader("boards.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/boards.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -330,7 +359,13 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildMemory(){ 
         try{
-            FileReader out = new FileReader("memories.csv");
+            File temp = new File("csv/memories.csv");
+        	
+    	    String absolutePath = temp.getAbsolutePath();
+    	    //System.out.println("File path : " + absolutePath);
+            //File file = new File(filePath);
+            FileReader out = new FileReader(absolutePath);
+            //FileReader out = new FileReader("memories.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/memories.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -359,7 +394,13 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildPowers(){ 
         try{
-            FileReader out = new FileReader("powers.csv");
+            File temp = new File("csv/powers.csv");
+        	
+    	    String absolutePath = temp.getAbsolutePath();
+    	    //System.out.println("File path : " + absolutePath);
+            //File file = new File(filePath);
+            FileReader out = new FileReader(absolutePath);
+            //FileReader out = new FileReader("powers.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/powers.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -383,7 +424,13 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildDrives(){ 
         try{
-            FileReader out = new FileReader("drives.csv");
+            File temp = new File("csv/drives.csv");
+        	
+    	    String absolutePath = temp.getAbsolutePath();
+    	    //System.out.println("File path : " + absolutePath);
+            //File file = new File(filePath);
+            FileReader out = new FileReader(absolutePath);
+            //FileReader out = new FileReader("drives.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/drives.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
