@@ -1,4 +1,0 @@
-boardID,boardName,cpuSockets,cpuSocketType,cpuMaxSupport,gpuSockets,ramSockets,ramSocketType,ramMaxMemory,peripheralSocketsAvaliable,peripheralSocketsTotal,power,price
-1,ASUS ROG Strix B450-F,1,AM4,ph,3,4,DIMM,64,7,7,30,119.99
-2,ASUS Prime Z390-A,1,Intel,ph,3,4,DDR4,64,7,7,30,177.99
-3,AsRock MicroATX,1,AM4,ph,2,4,DDR4,64,7,7,30,79.99
