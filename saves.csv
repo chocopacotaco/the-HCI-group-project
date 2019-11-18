@@ -1,4 +1,0 @@
-SaveID,fileName,CpuID,GpuID,boardID,memoryID,powerID,driveStorage
-1,normalTest,1,1,1,1,1,1
-2,emptytest,0,0,0,0,0,0
-3,mooler,1,2,1,3,3,2
