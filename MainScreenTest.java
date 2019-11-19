@@ -7,7 +7,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -24,6 +24,30 @@ public class MainScreenTest {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	public partBuilder pc;
+	public currentPC open;
+	public JTextPane textPane;
+	
+	public double CPUprice;
+	public double GPUprice;
+	public double Boardprice;
+	public double Memprice;
+	public double Storeprice;
+	public double Powerprice;
+	public double CPUpower;
+	public double GPUpower;
+	public double Boardpower;
+	public double Mempower;
+	public double Storepower;
+	public double Powerpower;
+	public double total;
+	public double powerTot;
+	
 	private JTextField horz;
 	private JTextField vert;
 
@@ -54,41 +78,143 @@ public class MainScreenTest {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame();		
 		frame.setBounds(100, 100, 720, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"CPU", "CPU 1", "CPU 2", "CPU 3"}));
-		comboBox.setToolTipText("CPU");
+		pc = new partBuilder();
 		
+		String[] ar = new String[pc.cpus.size()];
+				
+		JComboBox comboBox = new JComboBox();
+		for(int i=0;i<pc.cpus.size();i++){
+			 ar[i]=pc.cpus.get(i).getName();
+			}
+			comboBox.setModel(new DefaultComboBoxModel(ar));
+			comboBox.setToolTipText("CPU");
+			comboBox.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					textField.setText(comboBox.getSelectedItem().toString());
+					
+					CPUprice=pc.cpus.get(comboBox.getSelectedIndex()).price;
+					total = CPUprice+GPUprice+Boardprice+Memprice+Storeprice+Powerprice;
+					CPUpower=pc.cpus.get(comboBox.getSelectedIndex()).power;
+					powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
+					textField_1.setText(String.valueOf(powerTot));
+					textPane.setText("CPU Speed: "+pc.cpus.get(comboBox.getSelectedIndex()).ghzSpeed+"\n"+"CPU Cores: "+pc.cpus.get(comboBox.getSelectedIndex()).cores 
+							+"\n"+"CPU Threads: "+pc.cpus.get(comboBox.getSelectedIndex()).threads+"\n"+"CPU Memory: "+pc.cpus.get(comboBox.getSelectedIndex()).memSize+
+							"\n"+"CPU Memory Size: "+pc.cpus.get(comboBox.getSelectedIndex()).memMeasure);
+					textField.repaint();
+				}
+			});		
 		comboBox.setBounds(1, 0, 98, 22);
 		frame.getContentPane().add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"GPU", "GPU 1", "GPU 2", "GPU 3"}));
+		
+		//GPU combo box
+		String[] gpuArr = new String[pc.gpus.size()];
+		
+		JComboBox comboBox_1 = new JComboBox();		
+		for(int i=0;i<pc.gpus.size();i++){
+			 gpuArr[i]=pc.gpus.get(i).gpuName;
+			}
+		comboBox_1.setModel(new DefaultComboBoxModel(gpuArr));
+		comboBox_1.setToolTipText("GPU");
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				textField_3.setText(comboBox_1.getSelectedItem().toString());
+				GPUprice=pc.gpus.get(comboBox_1.getSelectedIndex()).price;
+				total = CPUprice+GPUprice+Boardprice+Memprice+Storeprice+Powerprice;
+				GPUpower=pc.gpus.get(comboBox_1.getSelectedIndex()).power;
+				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
+				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
+				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				textField_3.repaint();
+			}
+		});
+		//comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"GPU", "GPU 1", "GPU 2", "GPU 3"}));
 		comboBox_1.setBounds(100, 0, 98, 22);
 		frame.getContentPane().add(comboBox_1);
 		
+		
+		//Board combo box		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Motherboard", "Motherboard 1", "Motherboard 2", "Motherboard 3", ""}));
+		pc.buildBoards();
+		String[] motherArr = new String[pc.boards.size()];
+		
+		for(int i=0;i<pc.boards.size();i++){
+		 motherArr[i]=pc.boards.get(i).boardName;
+		}
+		comboBox_2.setModel(new DefaultComboBoxModel(motherArr));
 		comboBox_2.setBounds(199, 0, 98, 22);
 		frame.getContentPane().add(comboBox_2);
+		comboBox_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				textField_4.setText(comboBox_2.getSelectedItem().toString());
+				Boardprice=pc.boards.get(comboBox_2.getSelectedIndex()).price;
+				total = CPUprice+GPUprice+Boardprice+Memprice+Storeprice+Powerprice;
+				Boardpower=pc.boards.get(comboBox_2.getSelectedIndex()).power;
+				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
+				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
+				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				textField_4.repaint();
+			}
+		});
 		
+		//Memory combo box		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Memory", "Memory 1", "Memory 2", "Memory 3"}));
+		String[] memArr = new String[pc.memories.size()];
+		
+		for(int i=0;i<pc.memories.size();i++){
+		 memArr[i]=pc.memories.get(i).memoryName;
+		}
+		comboBox_3.setModel(new DefaultComboBoxModel(memArr));
 		comboBox_3.setBounds(298, 0, 98, 22);
 		frame.getContentPane().add(comboBox_3);
+		comboBox_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				textField_7.setText(comboBox_3.getSelectedItem().toString());
+				Memprice=pc.memories.get(comboBox_3.getSelectedIndex()).price;
+				total = CPUprice+GPUprice+Boardprice+Memprice+Storeprice+Powerprice;
+				Mempower=pc.memories.get(comboBox_3.getSelectedIndex()).power;
+				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
+				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
+				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				textField_7.repaint();
+			}
+		});
 		
+		
+		//PSU combo box		
 		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Power Supply", "Power Supply 1", "Power Supply 2", "Power Supply 3", "", ""}));
-		comboBox_4.setBounds(397, 0, 116, 22);
-		frame.getContentPane().add(comboBox_4);
+		String[] powerArr = new String[pc.gpus.size()];
 		
-		JLabel lblCpu = new JLabel("CPU");
-		lblCpu.setBounds(12, 3, 56, 16);
-		frame.getContentPane().add(lblCpu);
+		for(int i=0;i<pc.powers.size();i++){
+		 powerArr[i]=pc.powers.get(i).powerName;
+		}
+		comboBox_4.setModel(new DefaultComboBoxModel(powerArr));
+		comboBox_4.setBounds(397, 0, 116, 22);
+		
+		frame.getContentPane().add(comboBox_4);
+		comboBox_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				textField_6.setText(comboBox_4.getSelectedItem().toString());
+				Powerprice=pc.powers.get(comboBox_4.getSelectedIndex()).price;
+				total = CPUprice+GPUprice+Boardprice+Memprice+Storeprice+Powerprice;
+				
+				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
+				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
+				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				textField_6.repaint();
+			}
+		});
+		
 		/*
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"Save", "Open Build", "Home"}));
@@ -123,94 +249,109 @@ public class MainScreenTest {
 		frame.getContentPane().add(lblOver);
 		
 		JComboBox comboBox_6 = new JComboBox();
-		comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"Storage", "Storage 1", "Storage 2", "Storage 3"}));
 		comboBox_6.setBounds(514, 0, 98, 22);
-		frame.getContentPane().add(comboBox_6);
+		String[] driveArr = new String[pc.drives.size()];
 		
-		int cpuX =   268, 	cpuY =    45;
-		int memX =   433, 	memY =   130;
-		int gpuX = 	 193, 	gpuY =   130;
-		int driveX = 268, 	driveY = 215;
-		int psuX =   358, 	psuY = 	 215;
-		int boardX = 358, 	boardY =  45;
+		for(int i=0;i<pc.drives.size();i++){
+			 driveArr[i]=pc.drives.get(i).storageName;
+			}
+		comboBox_6.setModel(new DefaultComboBoxModel(driveArr));
+		frame.getContentPane().add(comboBox_6);
+		comboBox_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				textField_5.setText(comboBox_6.getSelectedItem().toString());
+				Boardprice=pc.boards.get(comboBox_6.getSelectedIndex()).price;
+				total = CPUprice+GPUprice+Boardprice+Memprice+Storeprice+Powerprice;
+				Boardpower=pc.boards.get(comboBox_6.getSelectedIndex()).power;
+				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
+				textPane.setText("Storage Type: "+pc.drives.get(comboBox.getSelectedIndex()).storageType+"\n"+"Storage: "+pc.drives.get(comboBox.getSelectedIndex()).storageSize 
+						+"\n"+"Storage Measure: "+pc.drives.get(comboBox.getSelectedIndex()).sizeMeasure+"\n"+"Hard Drive RPM: "+pc.drives.get(comboBox.getSelectedIndex()).hardDriveRPM+
+						"\n"+"Solid State: "+pc.drives.get(comboBox.getSelectedIndex()).ssdDTR+
+						"\n"+"RAM Stick Amount: "+pc.memories.get(comboBox.getSelectedIndex()).ramStickAmount);
+				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
+				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				textField_5.repaint();
+			}
+		});
 		
 		JButton cpuButton = new JButton("cpu");
 		cpuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		cpuButton.setBounds(cpuX, cpuY, 60, 60);
+		cpuButton.setBounds(275, 60, 60, 60);
 		frame.getContentPane().add(cpuButton);
 		cpuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PartsScreen partsWindow = new PartsScreen();
-				String[] args = null;
-				partsWindow.main(args);
-				frame.dispose();
+				textPane.setText("CPU Speed: "+pc.cpus.get(comboBox.getSelectedIndex()).ghzSpeed+"\n"+"CPU Cores: "+pc.cpus.get(comboBox.getSelectedIndex()).cores 
+						+"\n"+"CPU Threads: "+pc.cpus.get(comboBox.getSelectedIndex()).threads+"\n"+"CPU Memory: "+pc.cpus.get(comboBox.getSelectedIndex()).memSize+
+						"\n"+"CPU Memory Size: "+pc.cpus.get(comboBox.getSelectedIndex()).memMeasure);
 			}			
 		});
 		
 		JButton memoryButton = new JButton("ram");
 		memoryButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		memoryButton.setBounds(433, 140, 60, 60);
+		memoryButton.setBounds(440, 155, 60, 60);
 		frame.getContentPane().add(memoryButton);
 		memoryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PartsScreen partsWindow = new PartsScreen();
-				String[] args = null;
-				partsWindow.main(args);
-				frame.dispose();
+				textPane.setText("Socket Type: "+pc.memories.get(comboBox.getSelectedIndex()).socketType+"\n"+"Memory Size: "+pc.memories.get(comboBox.getSelectedIndex()).memorySize 
+						+"\n"+"CPU Clock Speed: "+pc.gpus.get(comboBox.getSelectedIndex()).gpuClockSpeed+"\n"+"GPU Memory: "+pc.gpus.get(comboBox.getSelectedIndex()).memory+
+						"\n"+"RAM Type: "+pc.memories.get(comboBox.getSelectedIndex()).socketType+
+						"\n"+"RAM Stick Amount: "+pc.memories.get(comboBox.getSelectedIndex()).ramStickAmount);
 			}			
 		});
 		
 		JButton driveButton = new JButton("drive");
 		driveButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		driveButton.setBounds(268, 235, 60, 60);
+		driveButton.setBounds(275, 250, 60, 60);
 		frame.getContentPane().add(driveButton);	
 		driveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PartsScreen partsWindow = new PartsScreen();
-				String[] args = null;
-				partsWindow.main(args);
-				frame.dispose();
+				textPane.setText("Storage Type: "+pc.drives.get(comboBox.getSelectedIndex()).storageType+"\n"+"Storage: "+pc.drives.get(comboBox.getSelectedIndex()).storageSize 
+						+"\n"+"Storage Measure: "+pc.drives.get(comboBox.getSelectedIndex()).sizeMeasure+"\n"+"Hard Drive RPM: "+pc.drives.get(comboBox.getSelectedIndex()).hardDriveRPM+
+						"\n"+"Solid State: "+pc.drives.get(comboBox.getSelectedIndex()).ssdDTR+
+						"\n"+"RAM Stick Amount: "+pc.memories.get(comboBox.getSelectedIndex()).ramStickAmount);
 			}			
 		});
 		
 		JButton psuButton = new JButton("psu");
 		psuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		psuButton.setBounds(358, 235, 60, 60);
+		psuButton.setBounds(365, 250, 60, 60);
 		frame.getContentPane().add(psuButton);
 		psuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PartsScreen partsWindow = new PartsScreen();
-				String[] args = null;
-				partsWindow.main(args);
-				frame.dispose();
+				textPane.setText("Max Wattage: "+pc.powers.get(comboBox.getSelectedIndex()).maxWattage+"\n");
 			}			
 		});
 		
 		JButton gpuButton = new JButton("gpu");
 		gpuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		gpuButton.setBounds(193, 140, 60, 60);
+		gpuButton.setBounds(200, 155, 60, 60);
 		frame.getContentPane().add(gpuButton);
 		gpuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PartsScreen partsWindow = new PartsScreen();
-				String[] args = null;
-				partsWindow.main(args);
-				frame.dispose();
+				textPane.setText("GPU Chip Name: "+pc.gpus.get(comboBox.getSelectedIndex()).chipName+"\n"+"Bus: "+pc.gpus.get(comboBox.getSelectedIndex()).bus 
+						+"\n"+"CPU Clock Speed: "+pc.gpus.get(comboBox.getSelectedIndex()).gpuClockSpeed+"\n"+"GPU Memory: "+pc.gpus.get(comboBox.getSelectedIndex()).memory+
+						"\n"+"CPU Memory Clock: "+pc.gpus.get(comboBox.getSelectedIndex()).memoryClock);
 			}			
 		});
 		
 		JButton motherboardButton = new JButton("MB");
 		motherboardButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		motherboardButton.setBounds(boardX, boardY, 60, 60);
+		motherboardButton.setBounds(365, 60, 60, 60);
 		frame.getContentPane().add(motherboardButton);
 		motherboardButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PartsScreen partsWindow = new PartsScreen();
-				String[] args = null;
-				partsWindow.main(args);
-				frame.dispose();
+				textPane.setText("CPU Socket: "+pc.boards.get(comboBox.getSelectedIndex()).cpuSocketType+"\n"+"CPU Socket: "+pc.boards.get(comboBox.getSelectedIndex()).cpuSocket 
+						+"\n"+"Max CPU Support: "+pc.boards.get(comboBox.getSelectedIndex()).cpuMaxSupport+"\n"+"GPU Sockets: "
+						+pc.boards.get(comboBox.getSelectedIndex()).gpuSockets+
+						"\n"+"RAM Sockets: "+pc.boards.get(comboBox.getSelectedIndex()).ramSockets+
+						"\n"+"RAM Scoket Type: "+pc.boards.get(comboBox.getSelectedIndex()).ramSocketType+
+						"\n"+"Max RAM Memory: "+pc.boards.get(comboBox.getSelectedIndex()).ramMaxMemory+
+						"\n"+"Peripheral Sockets Available: "+pc.boards.get(comboBox.getSelectedIndex()).peripheralSocketsAvaliable+
+						"\n"+"Total Peripheral Sockets: "+pc.boards.get(comboBox.getSelectedIndex()).peripheralSocketsTotal);
 			}			
 		});
+		
 		/*
 		horz = new JTextField();
 		horz.setBounds(0, 170, 687, 1);
@@ -222,48 +363,31 @@ public class MainScreenTest {
 		frame.getContentPane().add(vert);
 		vert.setColumns(10);
 		*/
-		double cpuCenterX = cpuX+30;
-		double cpuCenterY = cpuY+30;
-		
-		double gpuCenterX = gpuX+30;
-		double gpuCenterY = gpuY+30;
-		
-		double driveCenterX = cpuCenterX;
-		double driveCenterY = driveY+30;
-		
-		double memCenterX = memX+30;
-		double memCenterY = gpuCenterY;
-		
-		double psuCenterX = psuX+30;
-		double psuCenterY = driveCenterY;
-		
-		double boardCenterX = psuCenterX;
-		double boardCenterY = cpuCenterY;
-				
+						
 		JPanel panel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				Graphics2D g2 = (Graphics2D) g;
 				
-				Shape cpuToGpu = new Line2D.Double(cpuCenterX, cpuCenterY, gpuCenterX, gpuCenterY);
-				Shape cpuToDrive = new Line2D.Double(cpuCenterX, cpuCenterY, driveCenterX, driveCenterY);
-				Shape cpuToPsu = new Line2D.Double(cpuCenterX, cpuCenterY, psuCenterX, psuCenterY);
-				Shape cpuToRam = new Line2D.Double(cpuCenterX, cpuCenterY, memCenterX, memCenterY);
-				Shape cpuToMB = new Line2D.Double(cpuCenterX, cpuCenterY, boardCenterX, boardCenterY);
+				Shape cpuToGpu = new Line2D.Double(105, 30, 30, 125);
+				Shape cpuToDrive = new Line2D.Double(105, 30, 105, 220);
+				Shape cpuToPsu = new Line2D.Double(105, 30, 195, 220);
+				Shape cpuToRam = new Line2D.Double(105, 30, 270, 125);
+				Shape cpuToMB = new Line2D.Double(105, 30, 195, 30);
 				
-				Shape gpuToDrive = new Line2D.Double(gpuCenterX, gpuCenterY, driveCenterX, driveCenterY);
-				Shape gpuToPsu = new Line2D.Double(gpuCenterX, gpuCenterY, psuCenterX, psuCenterY);
-				Shape gpuToRam = new Line2D.Double(gpuCenterX, gpuCenterY, memCenterX, memCenterY);
-				Shape gpuToMB = new Line2D.Double(gpuCenterX, gpuCenterY, boardCenterX, boardCenterY);
+				Shape gpuToDrive = new Line2D.Double(30, 125, 105, 220);
+				Shape gpuToPsu = new Line2D.Double(30, 125, 195, 220);
+				Shape gpuToRam = new Line2D.Double(30, 125, 270, 125);
+				Shape gpuToMB = new Line2D.Double(30, 125, 195, 30);
 				
-				Shape driveToPsu = new Line2D.Double(driveCenterX, driveCenterY, psuCenterX, psuCenterY);
-				Shape driveToRam = new Line2D.Double(driveCenterX, driveCenterY, memCenterX, memCenterY);
-				Shape driveToMB = new Line2D.Double(driveCenterX, driveCenterY, boardCenterX, boardCenterY);
+				Shape driveToPsu = new Line2D.Double(105, 220, 195, 220);
+				Shape driveToRam = new Line2D.Double(105, 220, 270, 125);
+				Shape driveToMB = new Line2D.Double(105, 220, 195, 30);
 				
-				Shape psuToRam = new Line2D.Double(psuCenterX, psuCenterY, memCenterX, memCenterY);
-				Shape psuToMB = new Line2D.Double(psuCenterX, psuCenterY, boardCenterX, boardCenterY);
+				Shape psuToRam = new Line2D.Double(195, 220, 270, 125);
+				Shape psuToMB = new Line2D.Double(195, 220, 195, 30);
 				
-				Shape ramToMB = new Line2D.Double(memCenterX, memCenterY, boardCenterX, boardCenterY);
-				
+				Shape ramToMB = new Line2D.Double(270, 125, 195, 30);
+								
 						g2.draw(cpuToGpu);
 						g2.draw(cpuToDrive);
 						g2.draw(cpuToPsu);
@@ -281,7 +405,7 @@ public class MainScreenTest {
 						g2.draw(ramToMB);						
 			}
 		};
-		panel.setBounds(193, 45, 300, 250);
+		panel.setBounds(200, 60, 300, 250);
 		panel.setVisible(false);
 		
 		JButton saveBtn = new JButton("Save");
@@ -323,12 +447,65 @@ public class MainScreenTest {
 		});
 		
 		JButton panelToggleBtn = new JButton("toggle");
-		panelToggleBtn.setBounds(10, 250, 89, 23);
+		panelToggleBtn.setBounds(307, 321, 89, 23);
 		frame.getContentPane().add(panelToggleBtn);
 		panelToggleBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel.setVisible(true);
 			}			
 		});
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(5, 120, 167, 22);
+		frame.getContentPane().add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(5, 170, 167, 22);
+		frame.getContentPane().add(textField_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(5, 270, 167, 22);
+		frame.getContentPane().add(textField_5);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(5, 220, 167, 22);
+		frame.getContentPane().add(textField_6);
+		
+		JLabel lblCpu_1 = new JLabel("CPU");
+		lblCpu_1.setBounds(40, 100, 56, 16);
+		frame.getContentPane().add(lblCpu_1);
+		
+		JLabel lblGpu = new JLabel("GPU");
+		lblGpu.setBounds(40, 150, 56, 16);
+		frame.getContentPane().add(lblGpu);
+		
+		JLabel lblMotherboard = new JLabel("Motherboard");
+		lblMotherboard.setBounds(40, 200, 98, 16);
+		frame.getContentPane().add(lblMotherboard);
+		
+		JLabel lblPowerSupply = new JLabel("Power Supply");
+		lblPowerSupply.setBounds(40, 250, 98, 16);
+		frame.getContentPane().add(lblPowerSupply);
+		
+		JLabel lblStorage = new JLabel("Storage");
+		lblStorage.setBounds(40, 300, 98, 16);
+		frame.getContentPane().add(lblStorage);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(5, 320, 167, 22);
+		frame.getContentPane().add(textField_7);
+		
+		 textPane = new JTextPane();
+			textPane.setBounds(515, 152, 153, 158);
+			frame.getContentPane().add(textPane);
+			
+			JLabel lblPartInfo = new JLabel("Part Info");
+			lblPartInfo.setBounds(515, 125, 81, 16);
+			frame.getContentPane().add(lblPartInfo);
 	}
 }
