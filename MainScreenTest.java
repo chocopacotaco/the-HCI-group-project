@@ -94,6 +94,8 @@ public class MainScreenTest {
 		frame.getContentPane().setLayout(null);
 		
 		pc = new partBuilder();
+		open = new currentPC(0,"untitled",null,null,null,null,null,null);
+		
 		
 		String[] ar = new String[pc.cpus.size()];
 				
