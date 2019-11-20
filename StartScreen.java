@@ -69,7 +69,7 @@ public class StartScreen {
 		frame.getContentPane().add(btnOpenBuild);
 		btnOpenBuild.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainScreen mainwindow = new MainScreen();
+				MainScreenTest mainwindow = new MainScreenTest();
 		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
 		    	String[] args = null;
 		    	mainwindow.main(args);
@@ -86,7 +86,7 @@ public class StartScreen {
 		frame.getContentPane().add(btnNewBuild);
 		btnNewBuild.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainScreen mainwindow = new MainScreen();
+				MainScreenTest mainwindow = new MainScreenTest();
 		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
 		    	String[] args = null;
 		    	mainwindow.main(args);
@@ -113,7 +113,7 @@ public class StartScreen {
 		JButton btnGpu_1 = new JButton(GPUImage);
 		btnGpu_1.setBounds(505, 222, 110, 25);
 		frame.getContentPane().add(btnGpu_1);
-		btnGpu.addActionListener(new ActionListener() {
+		btnGpu_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				partGuideScreen partScreen = new partGuideScreen();
 				String[] args = null;
