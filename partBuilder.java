@@ -236,7 +236,7 @@ public class partBuilder{
     
     public void buildCPUs(){
         try{
-            FileReader out = new FileReader("cpus.csv");
+            FileReader out = new FileReader("C:/Users/Quinn Dennis/Desktop/HCI project versions/the-HCI-group-project-postPresentation_v1/cpus.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/cpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -266,7 +266,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildGPUs(){ 
         try{
-            FileReader out = new FileReader("gpus.csv");
+            FileReader out = new FileReader("C:/Users/Quinn Dennis/Desktop/HCI project versions/the-HCI-group-project-postPresentation_v1/gpus.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/gpus.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -295,7 +295,8 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildBoards(){ 
         try{
-            FileReader out = new FileReader("boards.csv");
+            //FileReader out = new FileReader("boards.csv");
+            FileReader out = new FileReader("C:/Users/Quinn Dennis/Desktop/HCI project versions/the-HCI-group-project-postPresentation_v1/boards.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/boards.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -330,7 +331,8 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildMemory(){ 
         try{
-            FileReader out = new FileReader("memories.csv");
+            //FileReader out = new FileReader("memories.csv");
+            FileReader out = new FileReader("C:/Users/Quinn Dennis/Desktop/HCI project versions/the-HCI-group-project-postPresentation_v1/memories.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/memories.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -359,7 +361,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildPowers(){ 
         try{
-            FileReader out = new FileReader("powers.csv");
+            FileReader out = new FileReader("C:/Users/Quinn Dennis/Desktop/HCI project versions/the-HCI-group-project-postPresentation_v1/powers.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/powers.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -383,7 +385,7 @@ public class partBuilder{
     //Integer.parseInt(record[2]); Double.parseDouble(record[4]);
     public void buildDrives(){ 
         try{
-            FileReader out = new FileReader("drives.csv");
+            FileReader out = new FileReader("C:/Users/Quinn Dennis/Desktop/HCI project versions/the-HCI-group-project-postPresentation_v1/drives.csv");
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/drives.csv");
             BufferedReader out2 = new BufferedReader(out);
             CSVReader reader = new CSVReader(out2);
@@ -410,6 +412,7 @@ public class partBuilder{
         	e.printStackTrace();
         }
     }
+    
     public memoryPart findMemory(int memoryfinder){
         memoryPart savedCpu = null;
         for(int j = 0; j < memories.size(); j++){

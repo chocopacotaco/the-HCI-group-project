@@ -33,27 +33,4 @@ public class currentPC{
     public cpuPart getCpu(){
         return currentCpu;
     }
-    
-    public double cost(){
-        double totalCost = 0.00;
-        totalCost = totalCost + currentCpu.price;
-        totalCost = totalCost + currentGpu.price;
-        totalCost = totalCost + currentBoard.price;
-        totalCost = totalCost + currentMemory.price;
-        totalCost = totalCost + currentPower.price;
-        totalCost = totalCost + currentDrive.price;
-        return totalCost;
-    }
-    
-    public int powerCheck(){
-        int totalPower;
-        totalPower = currentPower.maxWattage;
-        totalPower = totalPower - currentCpu.power;
-        totalPower = totalPower - currentGpu.power;
-        totalPower = totalPower - currentBoard.power;
-        totalPower = totalPower - currentMemory.power;
-        totalPower = totalPower - currentDrive.power;
-        return totalPower;
-    }
-    
 }

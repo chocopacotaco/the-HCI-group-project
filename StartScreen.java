@@ -3,13 +3,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,6 +12,7 @@ import java.awt.Font;
 public class StartScreen {
 
 	private JFrame frame;
+	private JTextField txtWhatDoYou;
 
 	/**
 	 * Launch the application.
@@ -46,111 +42,81 @@ public class StartScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 789, 429);
+		frame.setBounds(100, 100, 452, 421);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-
-		// elsewhere
-		File file = new File("src/StartScreen.png");
-		BufferedImage myImage;
-		try {
-			myImage = ImageIO.read(file);
-			frame.setContentPane(new ImagePanel(myImage));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		ImageIcon OpenImage = new ImageIcon("src/OpenStartScreen.png");
+		txtWhatDoYou = new JTextField();
+		txtWhatDoYou.setEditable(false);
+		txtWhatDoYou.setText("What do you want to do?");
+		txtWhatDoYou.setHorizontalAlignment(SwingConstants.CENTER);
+		txtWhatDoYou.setBounds(116, 32, 172, 22);
+		frame.getContentPane().add(txtWhatDoYou);
+		txtWhatDoYou.setColumns(10);
 		
-		JButton btnOpenBuild = new JButton(OpenImage);
-		btnOpenBuild.setBounds(115, 220, 110, 25);
+		JButton btnPhotoEditing = new JButton("Photo Editing");
+		btnPhotoEditing.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnPhotoEditing.setBounds(22, 133, 110, 25);
+		frame.getContentPane().add(btnPhotoEditing);
+		
+		JButton btnGaming = new JButton("Gaming");
+		btnGaming.setBounds(22, 203, 110, 25);
+		frame.getContentPane().add(btnGaming);
+		
+		JButton btnVideoEditing = new JButton("Video Editing");
+		btnVideoEditing.setBounds(22, 168, 110, 25);
+		frame.getContentPane().add(btnVideoEditing);
+		
+		JButton btnOpenBuild = new JButton("Open Build");
+		btnOpenBuild.setBounds(165, 133, 110, 25);
 		frame.getContentPane().add(btnOpenBuild);
-		btnOpenBuild.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				MainScreen mainwindow = new MainScreen();
-		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
-		    	String[] args = null;
-		    	mainwindow.main(args);
-		    	frame.dispose();
-			}
-		});
 		
-		
-		
-		ImageIcon NewImage = new ImageIcon("src/NewStartScreen.png");
-		
-		JButton btnNewBuild = new JButton(NewImage);
-		btnNewBuild.setBounds(115, 263, 110, 25);
+		JButton btnNewBuild = new JButton("New Build");
+		btnNewBuild.setBounds(166, 168, 110, 25);
 		frame.getContentPane().add(btnNewBuild);
-		btnNewBuild.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				MainScreen mainwindow = new MainScreen();
-		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
-		    	String[] args = null;
-		    	mainwindow.main(args);
-		    	frame.dispose();
-			}
-		});
 		
-		ImageIcon CPUImage = new ImageIcon("src/CPUStartScreen.png");
-		
-		JButton btnGpu = new JButton(CPUImage);
-		btnGpu.setBounds(505, 195, 110, 25);
+		JButton btnGpu = new JButton("CPU");
+		btnGpu.setBounds(299, 133, 110, 25);
 		frame.getContentPane().add(btnGpu);
-		btnGpu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
-				partScreen.main(args);
-				frame.dispose();
-			}
-		});
 		
-		ImageIcon GPUImage = new ImageIcon("src/GPUStartScreen.png");
-		
-		JButton btnGpu_1 = new JButton(GPUImage);
-		btnGpu_1.setBounds(505, 222, 110, 25);
+		JButton btnGpu_1 = new JButton("GPU");
+		btnGpu_1.setBounds(299, 168, 110, 25);
 		frame.getContentPane().add(btnGpu_1);
-		btnGpu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
-				partScreen.main(args);
-				frame.dispose();
-			}
-		});
 		
-		
-		ImageIcon MothImage = new ImageIcon("src/MothStartScreen.png");
-		
-		JButton btnMotherboard = new JButton(MothImage);
-		btnMotherboard.setBounds(494, 248, 130, 25);
+		JButton btnMotherboard = new JButton("Motherboard");
+		btnMotherboard.setBounds(299, 203, 110, 25);
 		frame.getContentPane().add(btnMotherboard);
-		btnMotherboard.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
-				partScreen.main(args);
-				frame.dispose();
-			}
-		});
 		
+		JButton btnGeneralUse = new JButton("General Use");
+		btnGeneralUse.setBounds(22, 238, 110, 25);
+		frame.getContentPane().add(btnGeneralUse);
 		
-		ImageIcon MemImage = new ImageIcon("src/MemStartScreen.png");
-		
-		JButton btnMemory = new JButton(MemImage);
-		btnMemory.setBounds(505, 274, 110, 25);
+		JButton btnMemory = new JButton("Memory");
+		btnMemory.setBounds(299, 238, 110, 25);
 		frame.getContentPane().add(btnMemory);
-		btnMemory.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
-				partScreen.main(args);
-				frame.dispose();
-			}
-		});
 		
+		JLabel lblNewLabel = new JLabel("PC BUILDER NOW");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		lblNewLabel.setBounds(83, 0, 232, 29);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblPremadePc = new JLabel("PREMADE PC");
+		lblPremadePc.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPremadePc.setBounds(22, 90, 104, 30);
+		frame.getContentPane().add(lblPremadePc);
+		
+		JLabel lblPcEditor = new JLabel("PC EDITOR");
+		lblPcEditor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPcEditor.setBounds(165, 94, 90, 23);
+		frame.getContentPane().add(lblPcEditor);
+		
+		JLabel lblPartGuide = new JLabel("PART GUIDE");
+		lblPartGuide.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPartGuide.setBounds(303, 94, 90, 23);
+		frame.getContentPane().add(lblPartGuide);
 	}
 }
