@@ -441,6 +441,7 @@ public class MainScreenTest {
 				j.showSaveDialog(null);
 				String path = j.getSelectedFile().getAbsolutePath();
 				String filename = j.getSelectedFile().getName();
+				pc.save(open, filename);
 			}			
 		});
 		
