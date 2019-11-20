@@ -16,9 +16,11 @@ import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.*;
+import java.io.File;
+
 import javax.swing.JPanel;
 
-public class MainScreen {
+public class MainScreenTest {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -29,6 +31,14 @@ public class MainScreen {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	
+	private JButton cpuButton;
+	private JButton gpuButton;
+	private JButton memoryButton;
+	private JButton driveButton;
+	private JButton psuButton;
+	private JButton motherboardButton;
+	
 	public partBuilder pc;
 	public currentPC open;
 	public JTextPane textPane;
@@ -58,7 +68,7 @@ public class MainScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainScreen window = new MainScreen();
+					MainScreenTest window = new MainScreenTest();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,7 +80,7 @@ public class MainScreen {
 	/**
 	 * Create the application.
 	 */
-	public MainScreen() {
+	public MainScreenTest() {
 		initialize();
 	}
 
@@ -106,6 +116,7 @@ public class MainScreen {
 					textPane.setText("CPU Speed: "+pc.cpus.get(comboBox.getSelectedIndex()).ghzSpeed+"\n"+"CPU Cores: "+pc.cpus.get(comboBox.getSelectedIndex()).cores 
 							+"\n"+"CPU Threads: "+pc.cpus.get(comboBox.getSelectedIndex()).threads+"\n"+"CPU Memory: "+pc.cpus.get(comboBox.getSelectedIndex()).memSize+
 							"\n"+"CPU Memory Size: "+pc.cpus.get(comboBox.getSelectedIndex()).memMeasure);
+					cpuButton.setEnabled(true);
 					textField.repaint();
 				}
 			});		
@@ -132,6 +143,7 @@ public class MainScreen {
 				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
 				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				gpuButton.setEnabled(true);
 				textField_3.repaint();
 			}
 		});
@@ -161,6 +173,7 @@ public class MainScreen {
 				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
 				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				motherboardButton.setEnabled(true);
 				textField_4.repaint();
 			}
 		});
@@ -185,6 +198,7 @@ public class MainScreen {
 				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
 				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				memoryButton.setEnabled(true);
 				textField_7.repaint();
 			}
 		});
@@ -211,6 +225,7 @@ public class MainScreen {
 				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
 				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				psuButton.setEnabled(true);
 				textField_6.repaint();
 			}
 		});
@@ -222,7 +237,7 @@ public class MainScreen {
 		frame.getContentPane().add(comboBox_5);
 		*/
 		textField = new JTextField();
-		textField.setBounds(44, 400, 167, 22);
+		textField.setBounds(5, 120, 167, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
@@ -235,10 +250,6 @@ public class MainScreen {
 		textField_2.setColumns(10);
 		textField_2.setBounds(454, 400, 167, 22);
 		frame.getContentPane().add(textField_2);
-		
-		JLabel lblCurentParts = new JLabel("Current Parts");
-		lblCurentParts.setBounds(97, 380, 81, 16);
-		frame.getContentPane().add(lblCurentParts);
 		
 		JLabel lblPerformance = new JLabel("Performance");
 		lblPerformance.setBounds(292, 380, 81, 16);
@@ -271,13 +282,15 @@ public class MainScreen {
 						"\n"+"RAM Stick Amount: "+pc.memories.get(comboBox.getSelectedIndex()).ramStickAmount);
 				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
+				driveButton.setEnabled(true);
 				textField_5.repaint();
 			}
 		});
 		
-		JButton cpuButton = new JButton("cpu");
+		cpuButton = new JButton("cpu");
 		cpuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		cpuButton.setBounds(275, 60, 60, 60);
+		cpuButton.setEnabled(false);
 		frame.getContentPane().add(cpuButton);
 		cpuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -287,9 +300,10 @@ public class MainScreen {
 			}			
 		});
 		
-		JButton memoryButton = new JButton("ram");
+		memoryButton = new JButton("ram");
 		memoryButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		memoryButton.setBounds(440, 155, 60, 60);
+		memoryButton.setEnabled(false);
 		frame.getContentPane().add(memoryButton);
 		memoryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -300,9 +314,10 @@ public class MainScreen {
 			}			
 		});
 		
-		JButton driveButton = new JButton("drive");
+		driveButton = new JButton("drive");
 		driveButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		driveButton.setBounds(275, 250, 60, 60);
+		driveButton.setEnabled(false);
 		frame.getContentPane().add(driveButton);	
 		driveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -313,9 +328,10 @@ public class MainScreen {
 			}			
 		});
 		
-		JButton psuButton = new JButton("psu");
+		psuButton = new JButton("psu");
 		psuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		psuButton.setBounds(365, 250, 60, 60);
+		psuButton.setEnabled(false);
 		frame.getContentPane().add(psuButton);
 		psuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -323,9 +339,10 @@ public class MainScreen {
 			}			
 		});
 		
-		JButton gpuButton = new JButton("gpu");
+		gpuButton = new JButton("gpu");
 		gpuButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		gpuButton.setBounds(200, 155, 60, 60);
+		gpuButton.setEnabled(false);
 		frame.getContentPane().add(gpuButton);
 		gpuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -335,9 +352,10 @@ public class MainScreen {
 			}			
 		});
 		
-		JButton motherboardButton = new JButton("MB");
+		motherboardButton = new JButton("MB");
 		motherboardButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		motherboardButton.setBounds(365, 60, 60, 60);
+		motherboardButton.setEnabled(false);
 		frame.getContentPane().add(motherboardButton);
 		motherboardButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -388,25 +406,30 @@ public class MainScreen {
 				
 				Shape ramToMB = new Line2D.Double(270, 125, 195, 30);
 								
-						g2.draw(cpuToGpu);
-						g2.draw(cpuToDrive);
-						g2.draw(cpuToPsu);
-						g2.draw(cpuToRam);
-						g2.draw(cpuToMB);
-						g2.draw(gpuToDrive);
-						g2.draw(gpuToPsu);
-						g2.draw(gpuToRam);
-						g2.draw(gpuToMB);
-						g2.draw(driveToPsu);
-						g2.draw(driveToRam);
-						g2.draw(driveToMB);
-						g2.draw(psuToRam);
-						g2.draw(psuToMB);
-						g2.draw(ramToMB);						
+				if(cpuButton.isEnabled() == true && gpuButton.isEnabled() == true)	g2.draw(cpuToGpu);
+				if(cpuButton.isEnabled() == true && driveButton.isEnabled() == true)	g2.draw(cpuToDrive);
+				if(cpuButton.isEnabled() == true && psuButton.isEnabled() == true)	g2.draw(cpuToPsu);
+				if(cpuButton.isEnabled() == true && memoryButton.isEnabled() == true)	g2.draw(cpuToRam);
+				if(cpuButton.isEnabled() == true && motherboardButton.isEnabled() == true)	g2.draw(cpuToMB);
+				
+				if(gpuButton.isEnabled() == true && driveButton.isEnabled() == true)	g2.draw(gpuToDrive);
+				if(gpuButton.isEnabled() == true && psuButton.isEnabled() == true)	g2.draw(gpuToPsu);
+				if(gpuButton.isEnabled() == true && memoryButton.isEnabled() == true)	g2.draw(gpuToRam);
+				if(gpuButton.isEnabled() == true && motherboardButton.isEnabled() == true)	g2.draw(gpuToMB);
+				
+				if(driveButton.isEnabled() == true && psuButton.isEnabled() == true)	g2.draw(driveToPsu);
+				if(driveButton.isEnabled() == true && memoryButton.isEnabled() == true)		g2.draw(driveToRam);
+				if(driveButton.isEnabled() == true && motherboardButton.isEnabled() == true)	g2.draw(driveToMB);
+				
+				if(psuButton.isEnabled() == true && memoryButton.isEnabled() == true)	g2.draw(psuToRam);
+				if(psuButton.isEnabled() == true && motherboardButton.isEnabled() == true)	g2.draw(psuToMB);
+				
+				if(memoryButton.isEnabled() == true && motherboardButton.isEnabled() == true)	g2.draw(ramToMB);
+				
 			}
 		};
 		panel.setBounds(200, 60, 300, 250);
-		panel.setVisible(false);
+		//panel.setVisible(false);
 		
 		JButton saveBtn = new JButton("Save");
 		saveBtn.setBounds(612, 22, 89, 23);
@@ -416,7 +439,9 @@ public class MainScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser j = new JFileChooser();
 				j.showSaveDialog(null);
-				
+				String path = j.getSelectedFile().getAbsolutePath();
+				String filename = j.getSelectedFile().getName();
+				pc.save(open, filename);
 			}			
 		});
 		
@@ -445,7 +470,7 @@ public class MainScreen {
 				frame.dispose();
 			}			
 		});
-		
+		/*
 		JButton panelToggleBtn = new JButton("toggle");
 		panelToggleBtn.setBounds(307, 321, 89, 23);
 		frame.getContentPane().add(panelToggleBtn);
@@ -454,25 +479,25 @@ public class MainScreen {
 				panel.setVisible(true);
 			}			
 		});
-		
+		*/
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(5, 120, 167, 22);
+		textField_3.setBounds(5, 170, 167, 22);
 		frame.getContentPane().add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(5, 170, 167, 22);
+		textField_4.setBounds(5, 220, 167, 22);
 		frame.getContentPane().add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(5, 270, 167, 22);
+		textField_5.setBounds(5, 370, 167, 22);
 		frame.getContentPane().add(textField_5);
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(5, 220, 167, 22);
+		textField_6.setBounds(5, 320, 167, 22);
 		frame.getContentPane().add(textField_6);
 		
 		JLabel lblCpu_1 = new JLabel("CPU");
@@ -484,21 +509,25 @@ public class MainScreen {
 		frame.getContentPane().add(lblGpu);
 		
 		JLabel lblMotherboard = new JLabel("Motherboard");
-		lblMotherboard.setBounds(40, 200, 98, 16);
+		lblMotherboard.setBounds(40, 250, 98, 16);
 		frame.getContentPane().add(lblMotherboard);
 		
 		JLabel lblPowerSupply = new JLabel("Power Supply");
-		lblPowerSupply.setBounds(40, 250, 98, 16);
+		lblPowerSupply.setBounds(40, 300, 98, 16);
 		frame.getContentPane().add(lblPowerSupply);
 		
 		JLabel lblStorage = new JLabel("Storage");
-		lblStorage.setBounds(40, 300, 98, 16);
+		lblStorage.setBounds(40, 350, 98, 16);
 		frame.getContentPane().add(lblStorage);
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(5, 320, 167, 22);
+		textField_7.setBounds(5, 270, 167, 22);
 		frame.getContentPane().add(textField_7);
+		
+		JLabel lblMemory = new JLabel("RAM Memory");
+		lblMemory.setBounds(40, 200, 98, 16);
+		frame.getContentPane().add(lblMemory);
 		
 		 textPane = new JTextPane();
 			textPane.setBounds(515, 152, 153, 158);
