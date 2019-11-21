@@ -120,6 +120,10 @@ public class MainScreenTest {
 							"\n"+"CPU Memory Size: "+pc.cpus.get(comboBox.getSelectedIndex()).memMeasure);
 					cpuButton.setEnabled(true);
 					textField.repaint();
+					int partLocatator = comboBox.getSelectedIndex() + 1;
+					cpuPart testeeds = pc.findCPU(partLocatator);
+					System.out.println(testeeds.cpuName);
+					open.currentCpu = pc.findCPU(partLocatator);
 				}
 			});		
 		comboBox.setBounds(1, 0, 98, 22);
@@ -147,6 +151,10 @@ public class MainScreenTest {
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
 				gpuButton.setEnabled(true);
 				textField_3.repaint();
+				int partLocatator = comboBox_1.getSelectedIndex() + 1;
+				gpuPart testeeds = pc.findGPU(partLocatator);
+				System.out.println(testeeds.gpuName);
+				open.currentGpu = pc.findGPU(partLocatator);
 			}
 		});
 		//comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"GPU", "GPU 1", "GPU 2", "GPU 3"}));
@@ -177,6 +185,10 @@ public class MainScreenTest {
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
 				motherboardButton.setEnabled(true);
 				textField_4.repaint();
+				int partLocatator = comboBox_2.getSelectedIndex() + 1;
+				boardPart testeeds = pc.findBoard(partLocatator);
+				System.out.println(testeeds.boardName);
+				open.currentBoard = pc.findBoard(partLocatator);
 			}
 		});
 		
@@ -202,13 +214,17 @@ public class MainScreenTest {
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
 				memoryButton.setEnabled(true);
 				textField_7.repaint();
+				int partLocatator = comboBox_3.getSelectedIndex() + 1;
+				memoryPart testeeds = pc.findMemory(partLocatator);
+				//System.out.println(testeeds.memoryName);
+				open.currentMemory = pc.findMemory(partLocatator);
 			}
 		});
 		
 		
 		//PSU combo box		
 		JComboBox comboBox_4 = new JComboBox();
-		String[] powerArr = new String[pc.gpus.size()];
+		String[] powerArr = new String[pc.powers.size()];
 		
 		for(int i=0;i<pc.powers.size();i++){
 		 powerArr[i]=pc.powers.get(i).powerName;
@@ -229,6 +245,10 @@ public class MainScreenTest {
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
 				psuButton.setEnabled(true);
 				textField_6.repaint();
+				int partLocatator = comboBox_4.getSelectedIndex() + 1;
+				powerPart testeeds = pc.findPower(partLocatator);
+				System.out.println(testeeds.powerName);
+				open.currentPower = pc.findPower(partLocatator);
 			}
 		});
 		
@@ -286,6 +306,10 @@ public class MainScreenTest {
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
 				driveButton.setEnabled(true);
 				textField_5.repaint();
+				int partLocatator = comboBox_6.getSelectedIndex() + 1;
+				drivePart testeeds = pc.findDrives(partLocatator);
+				System.out.println(testeeds.storageName);
+				open.currentDrive = pc.findDrives(partLocatator);
 			}
 		});
 		
@@ -442,8 +466,9 @@ public class MainScreenTest {
 				JFileChooser j = new JFileChooser();
 				j.showSaveDialog(null);
 				String path = j.getSelectedFile().getAbsolutePath();
+				path = path.substring(0,path.lastIndexOf(File.separator));
 				String filename = j.getSelectedFile().getName();
-				pc.save(open, filename);
+				pc.save(open, filename, path);
 			}			
 		});
 		
