@@ -36,23 +36,50 @@ public class currentPC{
     
     public double cost(){
         double totalCost = 0.00;
-        totalCost = totalCost + currentCpu.price;
-        totalCost = totalCost + currentGpu.price;
-        totalCost = totalCost + currentBoard.price;
-        totalCost = totalCost + currentMemory.price;
-        totalCost = totalCost + currentPower.price;
-        totalCost = totalCost + currentDrive.price;
+        
+        if(currentCpu != null) {
+        	totalCost = totalCost + currentCpu.price;
+        }
+        if(currentGpu != null) {
+        	totalCost = totalCost + currentGpu.price;
+        }
+        if(currentBoard != null) {
+        	totalCost = totalCost + currentBoard.price;
+        }
+        if(currentMemory != null) {
+        	totalCost = totalCost + currentMemory.price;
+        }
+        if(currentPower != null) {
+        	totalCost = totalCost + currentPower.price;
+        }
+        if(currentDrive != null) {
+        	totalCost = totalCost + currentDrive.price;
+        }
+        
+        
         return totalCost;
     }
     
     public int powerCheck(){
-        int totalPower;
-        totalPower = currentPower.maxWattage;
-        totalPower = totalPower - currentCpu.power;
-        totalPower = totalPower - currentGpu.power;
-        totalPower = totalPower - currentBoard.power;
-        totalPower = totalPower - currentMemory.power;
-        totalPower = totalPower - currentDrive.power;
+        int totalPower = 0;
+        if(currentPower != null) {
+        	totalPower = currentPower.maxWattage;
+        }
+        if(currentCpu != null) {
+        	totalPower = totalPower - currentCpu.power;
+        }
+        if(currentGpu != null) {
+        	totalPower = totalPower - currentGpu.power;
+        }
+        if(currentBoard != null) {
+        	totalPower = totalPower - currentBoard.power;
+        }
+        if(currentMemory != null) {
+        	totalPower = totalPower - currentMemory.power;
+        }
+        if(currentDrive != null) {
+        	totalPower = totalPower - currentDrive.power;
+        }
         return totalPower;
     }
     

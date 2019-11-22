@@ -480,7 +480,70 @@ public class MainScreenTest {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser j = new JFileChooser();
 				j.showOpenDialog(null);
+				String path = j.getSelectedFile().getAbsolutePath();
+				//path = path.substring(0,path.lastIndexOf(File.separator));
+				String filename = j.getSelectedFile().getName();
+				File temp = new File(path);
+				open = pc.load(temp);
+				
+				if(open.currentGpu != null){
+					textField.setText(open.currentCpu.cpuName);//comboBox
+					int location = open.currentBoard.boardID - 1;
+					comboBox.setSelectedIndex(location);
+					CPUprice = open.currentCpu.price;
+					CPUpower = open.currentCpu.power;
+					cpuButton.setEnabled(true);
+				}
+				
+				if(open.currentGpu != null){
+					textField_3.setText(open.currentGpu.gpuName);
+					int location = open.currentBoard.boardID - 1;
+					comboBox_1.setSelectedIndex(location);
+					GPUprice = open.currentGpu.price;
+					GPUpower = open.currentGpu.power;
+					gpuButton.setEnabled(true);
+				}
+				
+				if(open.currentBoard != null){
+					textField_4.setText(open.currentBoard.boardName);
+					int location = open.currentBoard.boardID - 1;
+					comboBox_2.setSelectedIndex(location);
+					Boardprice = open.currentBoard.price;
+					Boardpower = open.currentBoard.power;
+					motherboardButton.setEnabled(true);
+				}
+				
+				if(open.currentMemory != null){
+					textField_7.setText(open.currentMemory.memoryName);
+					int location = open.currentMemory.memoryID - 1;
+					comboBox_3.setSelectedIndex(location);
+					Memprice = open.currentMemory.price;
+					Mempower = open.currentMemory.power;
+					memoryButton.setEnabled(true);
+				}
+				
+				if(open.currentPower != null){
+					textField_6.setText(open.currentPower.powerName);
+					int location = open.currentPower.powerID - 1;
+					comboBox_4.setSelectedIndex(location);
+					Powerprice = open.currentPower.price;
+					Powerpower = open.currentPower.maxWattage;
+					psuButton.setEnabled(true);
+				}
+				
+				if(open.currentDrive != null){
+					textField_5.setText(open.currentDrive.storageName);
+					int location = open.currentDrive.storageID - 1;
+					comboBox_6.setSelectedIndex(location);
+					Storeprice = open.currentPower.price;
+					Storepower = open.currentPower.maxWattage;
+					driveButton.setEnabled(true);
+				}
 
+				total = open.cost();
+				powerTot = open.powerCheck();
+				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
+				textField_2.setText(String.valueOf( String.format("%.2f", total)));
 			}			
 		});
 		
@@ -535,7 +598,7 @@ public class MainScreenTest {
 		lblGpu.setBounds(40, 150, 56, 16);
 		frame.getContentPane().add(lblGpu);
 		
-		JLabel lblMotherboard = new JLabel("Motherboard");
+		JLabel lblMotherboard = new JLabel("RAM Memory");
 		lblMotherboard.setBounds(40, 250, 98, 16);
 		frame.getContentPane().add(lblMotherboard);
 		
@@ -552,7 +615,7 @@ public class MainScreenTest {
 		textField_7.setBounds(5, 270, 167, 22);
 		frame.getContentPane().add(textField_7);
 		
-		JLabel lblMemory = new JLabel("RAM Memory");
+		JLabel lblMemory = new JLabel("Motherboard");
 		lblMemory.setBounds(40, 200, 98, 16);
 		frame.getContentPane().add(lblMemory);
 		
