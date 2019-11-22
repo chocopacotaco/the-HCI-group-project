@@ -54,8 +54,15 @@ public class partGuideScreen extends JFrame {
 	 */
 	
 	public partGuideScreen() {
+		
+    	ImageIcon imageIcon = new ImageIcon(getClass().getResource("/pics/cpu.jpg")); // load the image to a imageIcon
+    	Image image = imageIcon.getImage(); // transform it 
+    	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+    	//imageIcon = new ImageIcon(newimg);  // transform it back
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 634, 687);
+		setBounds(100, 100, 720, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -86,7 +93,7 @@ public class partGuideScreen extends JFrame {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(198, 73, 410, 550);
+		panel_1.setBounds(198, 73, 480, 550);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -106,34 +113,41 @@ public class partGuideScreen extends JFrame {
 	        public void actionPerformed(ActionEvent evt) {
 	        	
 	        	textPane.removeAll();
-	        	ImageIcon imageIcon = new ImageIcon(getClass().getResource("/pics/cpu.jpg")); // load the image to a imageIcon
-	        	Image image = imageIcon.getImage(); // transform it 
+	        	ImageIcon imageIconcpu = new ImageIcon(getClass().getResource("/pics/cpu.jpg")); // load the image to a imageIcon
+	        	Image image = imageIconcpu.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-	        	imageIcon = new ImageIcon(newimg);  // transform it back
+	        	imageIconcpu = new ImageIcon(newimg);  // transform it back
+	        	//imageIconcpu.
 	        	
-	        	textPane.insertIcon(imageIcon);
+	        	textPane.insertIcon(imageIconcpu);
 	        	lblTitleBox.setText("CPU");
-	        	txtrTextStuffHere.setText("\n\nHere is stuff About the CPU. \n The Cpu is the Brain of the Computer that does the brain stuff. \n It does important things like accessing the memory and running multple math problems in seconds. \n The more cores your processor has, the better its performance should be. For example: \n A processor with 4 cores runs slower than a core with 6 threads");
+	        	txtrTextStuffHere.setText("\n\nThe Central Processing Unit that is located on the motherboard. Often referred to as the computer’s\r\n" + 
+	        			"brain, the CPU’s main job is to carry out commands. Every key pressed, mouse clicked, and application\r\n" + 
+	        			"launched are instructions sent to the CPU.\r\n" + 
+	        			"The CPU is usually a two-inch ceramic square with a silicon chip the size of a thumbnail. The CPU is\r\n" + 
+	        			"stored into the motherboard’s CPU socket, which is covered by a heat sink that regulates heat from the\r\n" + 
+	        			"CPU.");
 	        }
 	    };
 		ActionListener setGPUAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
+	        	
 	        	textPane.removeAll();
-	        	ImageIcon imageIcon = new ImageIcon(getClass().getResource("/pics/gpu.jpg")); // load the image to a imageIcon
-	        	Image image = imageIcon.getImage(); // transform it 
+	        	//textPane.remove(textPane.get)
+	        	txtrTextStuffHere.removeAll();
+	        	ImageIcon imageIcongpu = new ImageIcon(getClass().getResource("/pics/gpu.png")); // load the image to a imageIcon
+	        	Image image = imageIcongpu.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-	        	imageIcon = new ImageIcon(newimg);  // transform it back
+	        	imageIcongpu = new ImageIcon(newimg);  // transform it back
 
-	        	textPane.insertIcon(imageIcon);
+	        	//textPane.insertIcon(imageIcon);
 	        	lblTitleBox.setText("GPU");
 	        	txtrTextStuffHere.setText("\"\r\n" + 
 	        			"\r\n" + 
-	        			"Here is stuff About the Graphics Processing Unit.\r\n" + 
-	        			"A graphics processing unit (GPU) is a specialized electronic circuit designed\r\n" + 
-	        			"to rapidly manipulate and alter memory to accelerate the creation of images in a\r\n" + 
-	        			"frame buffer intended for output to a display device. GPUs are used in embedded\r\n" + 
-	        			"systems, mobile phones, personal computers, workstations, and game consoles. Modern\r\n" + 
-	        			"GPUs are very efficient at manipulating computer graphics and image processing.\"");
+	        			"The Graphics Processing Unit, or video card, is responsible for what you see when you turn a computer\r\n" + 
+	        			"on with a monitor. Some GPUs are built into the motherboard but can be purchased as an external\r\n" +
+	        			"device for the motherboards expansion slot. Video games with high end graphics often require a\r\n" +
+	        			"powerful GPU for better performance.");
 	        }
 	    };
 		ActionListener setMotherboardAbout = new ActionListener() {
@@ -145,16 +159,12 @@ public class partGuideScreen extends JFrame {
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
 	        	
 	        	textPane.insertIcon(imageIcon);
-	        	lblTitleBox.setText("CPU");
+	        	lblTitleBox.setText("Motherboard");
 	        	txtrTextStuffHere.setText("\r\n" + 
 	        			"\r\n" + 
-	        			"Here is stuff About the Mother Board.\r\n" + 
-	        			"A motherboard (sometimes alternatively known as the mainboard, main circuit board, system board, baseboard, planar\r\n" + 
-	        			"board or logic board,[1] or colloquially, a mobo) is the main printed circuit board (PCB) found in general purpose \r\n" + 
-	        			"computers and other expandable systems. It holds, and allows, communication between many of the crucial electronic components\r\n" + 
-	        			"of a system, such as the central processing unit (CPU) and memory, and provides connectors for other peripherals. Unlike\r\n" + 
-	        			"a backplane, a motherboard usually contains significant sub-systems such as the central processor, the chipset's input/output\r\n" + 
-	        			"and memory controllers,  connectors, and other components integrated for general purpose use and applications.");
+	        			"The motherboard is a thin plate that holds the computer’s CPU, memory, hard drive connectors, video\r\n" + 
+	        			"card slots, and USB ports. As the main circuit board, the motherboard is both directly and indirectly\r\n" + 
+	        			"responsible the computer’s every function.");
 	        }
 	    };
 		ActionListener setPSUAbout = new ActionListener() {
@@ -166,14 +176,12 @@ public class partGuideScreen extends JFrame {
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
 
 	        	textPane.insertIcon(imageIcon);
-	        	lblTitleBox.setText("CPU");
+	        	lblTitleBox.setText("Power Supply");
 	        	txtrTextStuffHere.setText("\"\r\n" + 
 	        			"\r\n" + 
-	        			"Here is stuff About the Power Supply.\r\n" + 
-	        			"A power supply unit (or PSU) converts mains AC to low-voltage regulated DC power for the\r\n" + 
-	        			"internal components of a computer. Modern personal computers universally use switched-mode power\r\n" + 
-	        			"supplies. Some power supplies have a manual switch for selecting input voltage, while others\r\n" + 
-	        			"automatically adapt to the mains voltage.\\n\r\n" + 
+	        			"The power supply is the computer’s battery that supplies the power that it needs to operate. You plug it\r\n" + 
+	        			"in to a wall outlet to power the computer. It sends power through cables to the motherboard and its\r\n" + 
+	        			"other components." + 
 	        			"\\n\r\n" + 
 	        			"Most modern desktop personal computer power supplies conform to the ATX specification, which includes\r\n" + 
 	        			"form factor and voltage tolerances. While an ATX power supply is connected to the mains supply, it always\r\n" + 
@@ -240,6 +248,21 @@ public class partGuideScreen extends JFrame {
 	        }
 	    };
 		ActionListener setMemoryAbout = new ActionListener() {
+	        public void actionPerformed(ActionEvent evt) {
+	        	
+	        	ImageIcon imageIcon = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg"); // load the image to a imageIcon
+	        	Image image = imageIcon.getImage(); // transform it 
+	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+	        	imageIcon = new ImageIcon(newimg);  // transform it back
+	        	
+	        	//ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg");
+	        	//img.
+	        	textPane.insertIcon(imageIcon);
+	        	lblTitleBox.setText("Memory");
+	        	txtrTextStuffHere.setText("\n\nHere is stuff About the CPU. \n The Cpu is the Brain of the Computer that does the brain stuff. \n It does important things like accessing the memory and running multple math problems in seconds. \n The more cores your processor has, the better its performance should be. For example: \n A processor with 4 cores runs slower than a core with 6 threads");
+	        }
+	    };
+		ActionListener setMemoryInstall = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	        	
 	        	ImageIcon imageIcon = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg"); // load the image to a imageIcon
@@ -329,17 +352,18 @@ public class partGuideScreen extends JFrame {
 		
 		JMenuItem mntmBuilder = new JMenuItem("Builder");
 		menuBar_2.add(mntmBuilder);
-		/*mntmBuilder.addActionListener( new ActionListener()
+		mntmBuilder.addActionListener( new ActionListener()
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		    	BuildScreen buildwindow = new BuildScreen();
+		    	MainScreen mainwindow = new MainScreen();
 		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
 		    	String[] args = null;
-		    	buildwindow.main(args);
+		    	mainwindow.main(args);
+		    	
 		    }
 		});
-		*/
+		
 		
 		JMenuItem mntmHome = new JMenuItem("Home");
 		menuBar_2.add(mntmHome);
