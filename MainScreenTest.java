@@ -647,16 +647,17 @@ public class MainScreenTest {
 		 textPane = new JTextPane();
 		 textPane.setEditable(false);
 		 textPane.setBackground(Color.WHITE);
-		 textPane.setBounds(530, 258, 153, 164);
+		 textPane.setBounds(530, 150, 153, 164);
 		 textPane.setBorder(new EtchedBorder(EtchedBorder.RAISED,null,null));
 		 frame.getContentPane().add(textPane);
 			
 		 JLabel lblPartInfo = new JLabel("Part Info");
-		 lblPartInfo.setBounds(535, 238, 81, 16);
+		 lblPartInfo.setBounds(535, 125, 81, 16);
 		 frame.getContentPane().add(lblPartInfo);
-			
+		 
 		 JLabel lblComp = new JLabel("Incompatabilities");
 		 lblComp.setBounds(535, 100, 120, 14);
+		 lblComp.setVisible(false);
 		 frame.getContentPane().add(lblComp);
 			
 		 JTextPane compPane = new JTextPane();
@@ -665,6 +666,7 @@ public class MainScreenTest {
 		 compPane.setBackground(Color.WHITE);
 		 compPane.setBounds(530, 120, 153, 100);
 		 compPane.setBorder(new EtchedBorder(EtchedBorder.RAISED,null,null));
+		 compPane.setVisible(false);
 		 frame.getContentPane().add(compPane);
 	}
 }
