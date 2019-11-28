@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -39,7 +38,7 @@ public class partGuideScreen extends JFrame {
 			public void run() {
 				try {
 					partGuideScreen frame = new partGuideScreen();
-					ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
+					ImageIcon img = new ImageIcon("PCLogoNewC.png");
 					frame.setIconImage(img.getImage());
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -55,7 +54,7 @@ public class partGuideScreen extends JFrame {
 	
 	public partGuideScreen() {
 		
-    	ImageIcon imageIcon = new ImageIcon(getClass().getResource("/pics/cpu.jpg")); // load the image to a imageIcon
+    	ImageIcon imageIcon = new ImageIcon(getClass().getResource("cpu.jpg")); // load the image to a imageIcon
     	Image image = imageIcon.getImage(); // transform it 
     	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
     	//imageIcon = new ImageIcon(newimg);  // transform it back
@@ -111,9 +110,9 @@ public class partGuideScreen extends JFrame {
 		
 		ActionListener setCPUAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	        	
 	        	textPane.removeAll();
-	        	ImageIcon imageIconcpu = new ImageIcon(getClass().getResource("/pics/cpu.jpg")); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	ImageIcon imageIconcpu = new ImageIcon(getClass().getResource("cpu.jpg")); // load the image to a imageIcon
 	        	Image image = imageIconcpu.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIconcpu = new ImageIcon(newimg);  // transform it back
@@ -131,11 +130,11 @@ public class partGuideScreen extends JFrame {
 	    };
 		ActionListener setGPUAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	        	
+	        	textPane.removeAll();
 	        	textPane.removeAll();
 	        	//textPane.remove(textPane.get)
 	        	txtrTextStuffHere.removeAll();
-	        	ImageIcon imageIcongpu = new ImageIcon(getClass().getResource("/pics/gpu.png")); // load the image to a imageIcon
+	        	ImageIcon imageIcongpu = new ImageIcon(getClass().getResource("gpu.png")); // load the image to a imageIcon
 	        	Image image = imageIcongpu.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcongpu = new ImageIcon(newimg);  // transform it back
@@ -153,7 +152,8 @@ public class partGuideScreen extends JFrame {
 		ActionListener setMotherboardAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	        	textPane.removeAll();
-	        	ImageIcon imageIcon = new ImageIcon(getClass().getResource("/pics/motherboard.png")); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon(getClass().getResource("motherboard.png")); // load the image to a imageIcon
 	        	Image image = imageIcon.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
@@ -170,7 +170,8 @@ public class partGuideScreen extends JFrame {
 		ActionListener setPSUAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	        	textPane.removeAll();
-	        	ImageIcon imageIcon = new ImageIcon("/pics/psu.jpg"); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("psu.png"); // load the image to a imageIcon
 	        	Image image = imageIcon.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
@@ -192,7 +193,8 @@ public class partGuideScreen extends JFrame {
 		ActionListener setRAMAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	        	textPane.removeAll();
-	        	ImageIcon imageIcon = new ImageIcon("/pics/ram.jpg"); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("ram.jpg"); // load the image to a imageIcon
 	        	Image image = imageIcon.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
@@ -211,7 +213,8 @@ public class partGuideScreen extends JFrame {
 		ActionListener setHDDAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	        	textPane.removeAll();
-	        	ImageIcon imageIcon = new ImageIcon("/pics/hdd.jpg"); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("hdd.jpg"); // load the image to a imageIcon
 	        	Image image = imageIcon.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
@@ -234,8 +237,9 @@ public class partGuideScreen extends JFrame {
 	    };
 		ActionListener setCPUInstall = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	        	
-	        	ImageIcon imageIcon = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg"); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("cpu.jpg"); // load the image to a imageIcon
 	        	Image image = imageIcon.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
@@ -243,14 +247,15 @@ public class partGuideScreen extends JFrame {
 	        	//ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg");
 	        	//img.
 	        	textPane.insertIcon(imageIcon);
-	        	lblTitleBox.setText("GPU");
+	        	lblTitleBox.setText("CPU");
 	        	txtrTextStuffHere.setText("\n\nHere is stuff About the CPU. \n The Cpu is the Brain of the Computer that does the brain stuff. \n It does important things like accessing the memory and running multple math problems in seconds. \n The more cores your processor has, the better its performance should be. For example: \n A processor with 4 cores runs slower than a core with 6 threads");
 	        }
 	    };
 		ActionListener setMemoryAbout = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	        	
-	        	ImageIcon imageIcon = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg"); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("ram.jpg"); // load the image to a imageIcon
 	        	Image image = imageIcon.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
@@ -264,8 +269,9 @@ public class partGuideScreen extends JFrame {
 	    };
 		ActionListener setMemoryInstall = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	        	
-	        	ImageIcon imageIcon = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg"); // load the image to a imageIcon
+	        	textPane.removeAll();
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("ram.jpg"); // load the image to a imageIcon
 	        	Image image = imageIcon.getImage(); // transform it 
 	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	        	imageIcon = new ImageIcon(newimg);  // transform it back
@@ -274,10 +280,76 @@ public class partGuideScreen extends JFrame {
 	        	//img.
 	        	textPane.insertIcon(imageIcon);
 	        	lblTitleBox.setText("Memory");
-	        	txtrTextStuffHere.setText("\n\nHere is stuff About the CPU. \n The Cpu is the Brain of the Computer that does the brain stuff. \n It does important things like accessing the memory and running multple math problems in seconds. \n The more cores your processor has, the better its performance should be. For example: \n A processor with 4 cores runs slower than a core with 6 threads");
+	        	txtrTextStuffHere.setText("\n\nHere is stuff About the Memory."
+	        			+ "\n The Cpu is the Brain of the Computer that does the brain stuff. \n It does important things like accessing the memory and running multple math problems in seconds. \n The more cores your processor has, the better its performance should be. For example: \n A processor with 4 cores runs slower than a core with 6 threads");
 	        }
 	    };
 	    
+	    ActionListener setGPUInstall = new ActionListener() {
+	        public void actionPerformed(ActionEvent evt) {
+	        	textPane.removeAll();
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("gpu.png"); // load the image to a imageIcon
+	        	Image image = imageIcon.getImage(); // transform it 
+	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+	        	imageIcon = new ImageIcon(newimg);  // transform it back
+	        	
+	        	//ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg");
+	        	//img.
+	        	textPane.insertIcon(imageIcon);
+	        	lblTitleBox.setText("GPU");
+	        	txtrTextStuffHere.setText("\n\nHere is stuff About the GPU.\nBefore installing a new video card make sure the PC is turned off." 
+	        			+"\nMost GPUs connect to the motherboard’s expansion slots.\nInsert the new GPU into the PCI-e slot and make sure it is secure"
+	        			+"\nby clicking the card into place and screwing the rear bracket down.\nConnect the GPU to the power supply and turn on the PC."
+	        			+"\nFinal step it to install the required driver and you’re finished.");
+	        }
+	    };
+	    
+	    ActionListener setBoardInstall = new ActionListener() {
+	        public void actionPerformed(ActionEvent evt) {
+	        	textPane.removeAll();
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("motherboard.png"); // load the image to a imageIcon
+	        	Image image = imageIcon.getImage(); // transform it 
+	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+	        	imageIcon = new ImageIcon(newimg);  // transform it back
+	        	
+	        	//ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg");
+	        	//img.
+	        	textPane.insertIcon(imageIcon);
+	        	lblTitleBox.setText("Motherboard");
+	        	txtrTextStuffHere.setText("\n\nHere is stuff About the Motherboard."
+	        			+ "\nSome motherboards come with a thin metal back plate that goes in"
+	        			+ "\nfront of the motherboard and keeps things organized. Measure you"
+	        			+ "\nPC case and check the pre-drilled holes on the back and where "
+	        			+ "\nyour motherboard fits. "
+	        			+ "\nLine up the motherboard and screw it in.");
+	        }
+	    };
+	    
+	    ActionListener setPowerInstall = new ActionListener() {
+	        public void actionPerformed(ActionEvent evt) {
+	        	textPane.removeAll();
+	        	textPane.removeAll();
+	        	ImageIcon imageIcon = new ImageIcon("psu.png"); // load the image to a imageIcon
+	        	Image image = imageIcon.getImage(); // transform it 
+	        	Image newimg = image.getScaledInstance(180, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+	        	imageIcon = new ImageIcon(newimg);  // transform it back
+	        	
+	        	//ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/cpu.jpg");
+	        	//img.
+	        	textPane.insertIcon(imageIcon);
+	        	lblTitleBox.setText("PSU");
+	        	txtrTextStuffHere.setText("\n\nHere is stuff About the Power supply."
+	        			+"\nThe power supply is typically the easiest component to install."
+	        			+ "\n\nMost PC cases have a designated area positioned at the bottom of \nthe case."
+	        			+ "\n\nRemove the case’s back plates and place the power supply in its "
+	        			+ "\ndesignated area and use a screwdriver and the necessary screws"
+	        			+ "\nto secure it in place."
+	        			+ "\n\nPlug the connectors to the motherboard and plug the power supply"
+	        			+ "\nto the wall outlet and turn it on.\r\n");
+	        }
+	    };
 		/* The menu items on the left side of the pane*/
 	    
 		JMenuBar menuBar = new JMenuBar();
@@ -356,8 +428,8 @@ public class partGuideScreen extends JFrame {
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		    	MainScreen mainwindow = new MainScreen();
-		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
+		    	MainScreenTest mainwindow = new MainScreenTest();
+		    	ImageIcon img = new ImageIcon("PCLogoNewC.png");
 		    	String[] args = null;
 		    	mainwindow.main(args);
 		    	
@@ -372,7 +444,7 @@ public class partGuideScreen extends JFrame {
 		    public void actionPerformed(ActionEvent e)
 		    {
 		    	StartScreen startwindow = new StartScreen();
-		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
+		    	ImageIcon img = new ImageIcon("PCLogoNewC.png");
 		    	String[] args = null;
 		    	startwindow.main(args);
 		    }
@@ -389,11 +461,19 @@ public class partGuideScreen extends JFrame {
 		 */
 		
 		mntmAboutCPU.addActionListener(setCPUAbout);
-		mntmHowToInstall_1.addActionListener(setCPUInstall);
-		mntmAbout_MotherBoard.addActionListener(setMotherboardAbout);
-		mntmAboutGPU.addActionListener(setGPUAbout);
-		mntmAbout_PowerSupply.addActionListener(setPSUAbout);
+		mntmHowToInstall.addActionListener(setCPUInstall);
 		
+		mntmAbout_MotherBoard.addActionListener(setMotherboardAbout);
+		mntmHowToInstall_4.addActionListener(setBoardInstall);
+		
+		mntmAboutGPU.addActionListener(setGPUAbout);
+		mntmHowToInstall_1.addActionListener(setGPUInstall);
+		
+		mntmAbout_PowerSupply.addActionListener(setPSUAbout);
+		mntmHowToInstall_2.addActionListener(setPowerInstall);
+		
+		mntmAbout_Memory.addActionListener(setRAMAbout);
+		mntmHowToInstall_3.addActionListener(setMemoryAbout);
 
 	}
 }
