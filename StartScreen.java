@@ -71,8 +71,9 @@ public class StartScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				MainScreenTest mainwindow = new MainScreenTest();
 		    	ImageIcon img = new ImageIcon("C:/Users/dn01284.AD/Pictures/PCLogoNewC.png");
-		    	String[] args = null;
+		    	String[] args = {"loader"};
 		    	mainwindow.main(args);
+		    	//mainwindow
 		    	frame.dispose();
 			}
 		});
@@ -102,7 +103,7 @@ public class StartScreen {
 		btnGpu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
+				String[] args = {"cpu"};
 				partScreen.main(args);
 				frame.dispose();
 			}
@@ -116,7 +117,7 @@ public class StartScreen {
 		btnGpu_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
+				String[] args = {"gpu"};
 				partScreen.main(args);
 				frame.dispose();
 			}
@@ -131,7 +132,7 @@ public class StartScreen {
 		btnMotherboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
+				String[] args = {"board"};
 				partScreen.main(args);
 				frame.dispose();
 			}
@@ -146,7 +147,33 @@ public class StartScreen {
 		btnMemory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				partGuideScreen partScreen = new partGuideScreen();
-				String[] args = null;
+				String[] args = {"memory"};
+				partScreen.main(args);
+				frame.dispose();
+			}
+		});
+		
+		JButton btnHHD = new JButton();
+		btnHHD.setBounds(505, 302, 110, 25);
+		frame.getContentPane().add(btnHHD);
+		btnHHD.setText("Hard Drive");
+		btnHHD.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				partGuideScreen partScreen = new partGuideScreen();
+				String[] args = {"hhd"};
+				partScreen.main(args);
+				frame.dispose();
+			}
+		});
+		
+		JButton btnPower = new JButton();
+		btnPower.setBounds(505, 330, 110, 25);
+		frame.getContentPane().add(btnPower);
+		btnPower.setText("Power Supply");
+		btnPower.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				partGuideScreen partScreen = new partGuideScreen();
+				String[] args = {"power"};
 				partScreen.main(args);
 				frame.dispose();
 			}

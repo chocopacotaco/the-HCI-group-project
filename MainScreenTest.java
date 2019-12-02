@@ -69,6 +69,12 @@ public class MainScreenTest {
 	
 	private JTextField horz;
 	private JTextField vert;
+	public JComboBox comboBox;
+	public JComboBox comboBox_1;
+	public JComboBox comboBox_2;
+	public JComboBox comboBox_3;
+	public JComboBox comboBox_4;
+	public JComboBox comboBox_6;
 
 	/**
 	 * Launch the application.
@@ -77,8 +83,15 @@ public class MainScreenTest {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainScreenTest window = new MainScreenTest();
-					window.frame.setVisible(true);
+					if(args[0]=="loader") {
+						
+						MainScreenTest window = new MainScreenTest();
+						window.openLoad();
+						window.frame.setVisible(true);
+					}else {
+						MainScreenTest window = new MainScreenTest();
+						window.frame.setVisible(true);
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -108,7 +121,7 @@ public class MainScreenTest {
 		
 		String[] ar = new String[pc.cpus.size()];
 				
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		for(int i=0;i<pc.cpus.size();i++){
 			 ar[i]=pc.cpus.get(i).getName();
 			}
@@ -131,7 +144,7 @@ public class MainScreenTest {
 					textField.repaint();
 					int partLocatator = comboBox.getSelectedIndex() + 1;
 					cpuPart testeeds = pc.findCPU(partLocatator);
-					System.out.println(testeeds.cpuName);
+					//System.out.println(testeeds.cpuName);
 					open.currentCpu = pc.findCPU(partLocatator);
 				}
 			});		
@@ -142,7 +155,7 @@ public class MainScreenTest {
 		//GPU combo box
 		String[] gpuArr = new String[pc.gpus.size()];
 		
-		JComboBox comboBox_1 = new JComboBox();		
+		comboBox_1 = new JComboBox();		
 		for(int i=0;i<pc.gpus.size();i++){
 			 gpuArr[i]=pc.gpus.get(i).gpuName;
 			}
@@ -165,7 +178,7 @@ public class MainScreenTest {
 				textField_3.repaint();
 				int partLocatator = comboBox_1.getSelectedIndex() + 1;
 				gpuPart testeeds = pc.findGPU(partLocatator);
-				System.out.println(testeeds.gpuName);
+				//System.out.println(testeeds.gpuName);
 				open.currentGpu = pc.findGPU(partLocatator);
 			}
 		});
@@ -174,7 +187,7 @@ public class MainScreenTest {
 		
 		
 		//Board combo box		
-		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2 = new JComboBox();
 		pc.buildBoards();
 		String[] motherArr = new String[pc.boards.size()/2];
 		
@@ -206,13 +219,13 @@ public class MainScreenTest {
 				textField_4.repaint();
 				int partLocatator = comboBox_2.getSelectedIndex() + 1;
 				boardPart testeeds = pc.findBoard(partLocatator);
-				System.out.println(testeeds.boardName);
+				//System.out.println(testeeds.boardName);
 				open.currentBoard = pc.findBoard(partLocatator);
 			}
 		});
 		
 		//Memory combo box		
-		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3 = new JComboBox();
 		String[] memArr = new String[pc.memories.size()];
 		
 		for(int i=0;i<pc.memories.size();i++){
@@ -246,7 +259,7 @@ public class MainScreenTest {
 		
 		
 		//PSU combo box		
-		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4 = new JComboBox();
 		String[] powerArr = new String[pc.powers.size()];
 		
 		for(int i=0;i<pc.powers.size();i++){
@@ -263,7 +276,7 @@ public class MainScreenTest {
 				Powerprice=pc.powers.get(comboBox_4.getSelectedIndex()).price;
 				total = CPUprice+GPUprice+Boardprice+Memprice+Storeprice+Powerprice;
 				
-				powerTot = CPUpower+GPUpower+Boardpower+Mempower+Storepower+Powerpower;
+				powerTot = Powerpower-(CPUpower+GPUpower+Boardpower+Mempower+Storepower);
 				textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
 				textField_2.setText(String.valueOf( String.format("%.2f", total)));
 				textPane.setText("Max Wattage: "+pc.powers.get(comboBox_4.getSelectedIndex()).maxWattage+"\n");
@@ -271,7 +284,7 @@ public class MainScreenTest {
 				textField_6.repaint();
 				int partLocatator = comboBox_4.getSelectedIndex() + 1;
 				powerPart testeeds = pc.findPower(partLocatator);
-				System.out.println(testeeds.powerName);
+				//System.out.println(testeeds.powerName);
 				open.currentPower = pc.findPower(partLocatator);
 			}
 		});
@@ -305,7 +318,7 @@ public class MainScreenTest {
 		lblOver.setBounds(378, 380, 81, 16);
 		frame.getContentPane().add(lblOver);
 		
-		JComboBox comboBox_6 = new JComboBox();
+		comboBox_6 = new JComboBox();
 		comboBox_6.setBounds(514, 0, 98, 22);
 		String[] driveArr = new String[pc.drives.size()];
 		
@@ -332,7 +345,7 @@ public class MainScreenTest {
 				textField_5.repaint();
 				int partLocatator = comboBox_6.getSelectedIndex() + 1;
 				drivePart testeeds = pc.findDrives(partLocatator);
-				System.out.println(testeeds.storageName);
+				//System.out.println(testeeds.storageName);
 				open.currentDrive = pc.findDrives(partLocatator);
 			}
 		});
@@ -503,7 +516,7 @@ public class MainScreenTest {
 			}			
 		});
 		
-		System.out.println(comboBox_4.getItemAt(1).toString());
+		//System.out.println(comboBox_4.getItemAt(1).toString());
 		
 		JButton openBtn = new JButton("Open");
 		openBtn.setBounds(612, 44, 89, 23);
@@ -668,5 +681,75 @@ public class MainScreenTest {
 		 compPane.setBorder(new EtchedBorder(EtchedBorder.RAISED,null,null));
 		 compPane.setVisible(false);
 		 frame.getContentPane().add(compPane);
+	}
+	
+	void openLoad(){
+		JFileChooser j = new JFileChooser();
+		j.showOpenDialog(null);
+						String path = j.getSelectedFile().getAbsolutePath();
+		//path = path.substring(0,path.lastIndexOf(File.separator));
+		String filename = j.getSelectedFile().getName();
+		File temp = new File(path);
+		open = pc.load(temp);
+
+		if(open.currentGpu != null){
+			textField.setText(open.currentCpu.cpuName);//comboBox
+			int location = open.currentBoard.boardID - 1;
+			comboBox.setSelectedIndex(location);
+			CPUprice = open.currentCpu.price;
+			CPUpower = open.currentCpu.power;
+			cpuButton.setEnabled(true);
+		}
+
+		if(open.currentGpu != null){
+			textField_3.setText(open.currentGpu.gpuName);
+			int location = open.currentBoard.boardID - 1;
+			comboBox_1.setSelectedIndex(location);
+			GPUprice = open.currentGpu.price;
+			GPUpower = open.currentGpu.power;
+			gpuButton.setEnabled(true);
+		}
+
+		if(open.currentBoard != null){
+			textField_4.setText(open.currentBoard.boardName);
+			int location = open.currentBoard.boardID - 1;
+			comboBox_2.setSelectedIndex(location);
+			Boardprice = open.currentBoard.price;
+			Boardpower = open.currentBoard.power;
+			motherboardButton.setEnabled(true);
+		}
+
+		if(open.currentMemory != null){
+			textField_7.setText(open.currentMemory.memoryName);
+			int location = open.currentMemory.memoryID - 1;
+			comboBox_3.setSelectedIndex(location);
+			Memprice = open.currentMemory.price;
+			Mempower = open.currentMemory.power;
+			memoryButton.setEnabled(true);
+		}
+
+		if(open.currentPower != null){
+			textField_6.setText(open.currentPower.powerName);
+			int location = open.currentPower.powerID - 1;
+			comboBox_4.setSelectedIndex(location);
+			Powerprice = open.currentPower.price;
+			Powerpower = open.currentPower.maxWattage;
+			psuButton.setEnabled(true);
+		}
+
+		if(open.currentDrive != null){
+			textField_5.setText(open.currentDrive.storageName);
+			int location = open.currentDrive.storageID - 1;
+			comboBox_6.setSelectedIndex(location);
+			Storeprice = open.currentPower.price;
+			Storepower = open.currentPower.maxWattage;
+			driveButton.setEnabled(true);
+		}
+
+
+		total = open.cost();
+		powerTot = open.powerCheck();
+		textField_1.setText(String.valueOf( String.format("%.2f", powerTot)));
+		textField_2.setText(String.valueOf( String.format("%.2f", total)));
 	}
 }

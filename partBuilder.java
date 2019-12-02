@@ -124,10 +124,10 @@ public class partBuilder{
             	
             	saveLocation= path +"\\"+ saveLocation;
             	absolutePath = saveLocation;
-        	    System.out.println("File path : " + absolutePath);
+        	    //System.out.println("File path : " + absolutePath);
             }else {
             	absolutePath = temp.getAbsolutePath();
-        	    System.out.println("File path : " + absolutePath);
+        	    //System.out.println("File path : " + absolutePath);
             }
             
             //File file = new File(filePath);
@@ -211,11 +211,11 @@ public class partBuilder{
             File temp = new File("saves.csv");
         	
     	    String absolutePath = temp.getAbsolutePath();
-    	    System.out.println("File path : " + absolutePath);
+    	    //System.out.println("File path : " + absolutePath);
     	    
     	    String filePath = absolutePath.substring(0,absolutePath.lastIndexOf(File.separator));
 				
-    	    System.out.println("File path : " + filePath);
+    	    //System.out.println("File path : " + filePath);
             
             File file = new File(absolutePath);
             FileReader out = new FileReader(file);
@@ -285,7 +285,7 @@ public class partBuilder{
             File temp = new File("cpus.csv");
         	
     	    String absolutePath = temp.getAbsolutePath();
-    	    System.out.println("File path : " + absolutePath);
+    	    //System.out.println("File path : " + absolutePath);
             //File file = new File(filePath);
             FileReader out = new FileReader(temp);
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/cpus.csv");
@@ -320,7 +320,7 @@ public class partBuilder{
             File temp = new File("gpus.csv");
         	
     	    String absolutePath = temp.getAbsolutePath();
-    	    System.out.println("File path : " + absolutePath);
+    	   //System.out.println("File path : " + absolutePath);
             //File file = new File(filePath);
             FileReader out = new FileReader(absolutePath);
             //for eclipse: FileReader out = new FileReader("C:/Users/dh08020.AD/eclipse-workspace/test2/src/gpus.csv");
